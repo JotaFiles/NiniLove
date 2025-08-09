@@ -187,7 +187,7 @@
             text-align: center;
         }
 
-        /* ===== ESTILOS DEL CALENDARIO ===== */
+        /* ===== ESTILOS DEL CALENDARIO OPTIMIZADO PARA MÓVIL ===== */
         .calendar-container {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
@@ -277,6 +277,7 @@
             position: relative;
             background: rgba(255, 255, 255, 0.5);
             border: 1px solid rgba(255, 107, 157, 0.1);
+            min-height: 40px;
         }
 
         .calendar-day:hover {
@@ -348,6 +349,8 @@
             box-shadow: var(--shadow-heavy);
             transform: scale(0.9);
             transition: all 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .phrase-modal.show .phrase-modal-content {
@@ -602,50 +605,240 @@
             border: 2px dashed rgba(255, 107, 157, 0.2);
         }
 
+        /* ===== OPTIMIZACIONES ESPECÍFICAS PARA MÓVIL ===== */
         @media (max-width: 768px) {
-            .container { padding: 10px; }
-            .header h1 { font-size: 2.2rem; }
-            .card { padding: 15px; }
-            .clock { font-size: 1.8rem; }
-            .love-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+            .container { 
+                padding: 8px; 
+            }
+            
+            .header h1 { 
+                font-size: 2rem; 
+            }
+            
+            .header-content {
+                padding: 20px 15px;
+            }
+            
+            .card { 
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .clock { 
+                font-size: 1.6rem; 
+            }
+            
+            .clock-display {
+                padding: 12px;
+            }
+            
+            .love-stats { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 10px; 
+            }
+            
+            .stat-item {
+                padding: 10px;
+            }
+            
+            .stat-number {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+            
+            /* Optimizaciones específicas del calendario para móvil */
+            .calendar-container {
+                padding: 15px;
+                margin: 0 -5px;
+            }
             
             .calendar-header {
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
+                margin-bottom: 20px;
             }
             
             .calendar-nav {
-                order: 2;
+                order: 1;
+                gap: 20px;
             }
             
-            .calendar-turn-info {
-                order: 1;
-                text-align: center;
+            .calendar-nav-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.4rem;
             }
             
             .calendar-month-year {
+                order: 2;
+                font-size: 1.2rem;
+                min-width: auto;
+            }
+            
+            .calendar-turn-info {
                 order: 3;
+                text-align: center;
+                white-space: normal;
+                line-height: 1.3;
+                padding: 10px 12px;
+                font-size: 0.8rem;
             }
             
             .calendar-grid {
-                gap: 4px;
+                gap: 3px;
+                margin-bottom: 15px;
+            }
+            
+            .calendar-day-header {
+                font-size: 0.75rem;
+                padding: 8px 2px;
+                font-weight: 700;
             }
             
             .calendar-day {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
+                min-height: 35px;
+                border-radius: 8px;
+                font-weight: 600;
+            }
+            
+            .calendar-day.has-phrase::after {
+                font-size: 0.6rem;
+                bottom: 1px;
+                right: 1px;
+            }
+            
+            /* Modal optimizado para móvil */
+            .phrase-modal {
+                padding: 10px;
+                align-items: flex-start;
+                padding-top: 20px;
             }
             
             .phrase-modal-content {
-                padding: 20px;
-                margin: 10px;
+                padding: 20px 15px;
+                margin: 0;
+                width: 100%;
+                max-width: none;
+                border-radius: 15px;
+                max-height: 85vh;
+            }
+            
+            .phrase-modal-title {
+                font-size: 1.3rem;
+            }
+            
+            .phrase-modal-date {
+                font-size: 0.8rem;
+                line-height: 1.3;
+            }
+            
+            .phrase-modal-turn {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+            
+            .form-input, .form-select, .form-textarea {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+            
+            .form-textarea {
+                min-height: 70px;
             }
             
             .modal-actions {
                 flex-direction: column;
+                gap: 8px;
             }
             
             .modal-actions .btn {
                 width: 100%;
+                min-width: auto;
+                padding: 12px;
+            }
+            
+            /* Otros elementos móviles */
+            .content-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            
+            .memory-image {
+                max-height: 200px;
+            }
+        }
+
+        /* ===== OPTIMIZACIONES PARA PANTALLAS MUY PEQUEÑAS ===== */
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .love-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            .stat-number {
+                font-size: 1rem;
+            }
+            
+            .stat-label {
+                font-size: 0.7rem;
+            }
+            
+            .calendar-container {
+                padding: 10px;
+                margin: 0 -2px;
+            }
+            
+            .calendar-day {
+                min-height: 32px;
+                font-size: 0.75rem;
+            }
+            
+            .calendar-day-header {
+                font-size: 0.7rem;
+                padding: 6px 1px;
+            }
+            
+            .calendar-nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .calendar-month-year {
+                font-size: 1.1rem;
+            }
+            
+            .phrase-modal-content {
+                padding: 15px 12px;
+            }
+        }
+
+        /* ===== OPTIMIZACIONES PARA LANDSCAPE EN MÓVIL ===== */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .phrase-modal {
+                padding-top: 10px;
+            }
+            
+            .phrase-modal-content {
+                max-height: 95vh;
+            }
+            
+            .calendar-day {
+                min-height: 30px;
             }
         }
 
@@ -656,6 +849,23 @@
 
         .fade-in {
             animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* ===== MEJORAS ADICIONALES PARA TOUCH ===== */
+        @media (pointer: coarse) {
+            .calendar-day {
+                min-height: 44px; /* Tamaño mínimo recomendado para touch */
+            }
+            
+            .calendar-nav-btn {
+                min-width: 44px;
+                min-height: 44px;
+            }
+            
+            .btn {
+                min-height: 44px;
+                padding: 12px 20px;
+            }
         }
     </style>
 </head>
@@ -1699,7 +1909,7 @@ CREATE POLICY "Allow all operations" ON daily_phrases FOR ALL USING (true);
    📅 Frases del día por turnos (Nini/Jota)
    🔄 Sincronización automática
    💕 Animaciones románticas
-   📱 Responsive design
+   📱 Responsive design optimizado para móviles
    🇨🇱 Configurado para zona horaria de Chile
 
 🔧 PERSONALIZACIÓN:
@@ -1713,13 +1923,17 @@ CREATE POLICY "Allow all operations" ON daily_phrases FOR ALL USING (true);
    - Solo se pueden agregar frases el día actual
    - Los recuerdos y mensajes se pueden agregar siempre
 
-🛠️ ARREGLOS REALIZADOS:
-   ✅ Zona horaria configurada para Chile (Calama)
-   ✅ Permite agregar frases en el día actual
-   ✅ Validación correcta de fechas
-   ✅ Formato de fechas chileno (es-CL)
+🛠️ OPTIMIZACIONES MÓVILES:
+   ✅ Calendario perfectamente adaptado para pantallas pequeñas
+   ✅ Botones con tamaño mínimo recomendado para touch (44px)
+   ✅ Espaciado optimizado entre elementos del calendario
+   ✅ Modal responsive que se ajusta al tamaño de pantalla
+   ✅ Grid de días con mejor visibilidad en móvil
+   ✅ Headers de días abreviados para mejor legibilidad
+   ✅ Controles de navegación del calendario más grandes
+   ✅ Información de turnos adaptativa
 
-¡Disfruten su aplicación de amor! 💕
+¡Disfruten su aplicación de amor optimizada para móviles! 💕📱
                 `);
             }
         };
