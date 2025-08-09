@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nini ❤️ Jota - Nuestro Amor</title>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
         
@@ -25,6 +24,7 @@
             --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
             --shadow-light: 0 4px 20px rgba(255, 107, 157, 0.15);
             --shadow-medium: 0 8px 30px rgba(255, 107, 157, 0.2);
             --shadow-heavy: 0 15px 40px rgba(255, 107, 157, 0.3);
@@ -38,7 +38,6 @@
             overflow-x: hidden;
         }
 
-        /* Fondo animado moderno */
         .animated-bg {
             position: fixed;
             top: 0;
@@ -57,42 +56,10 @@
         }
 
         @keyframes float-heart {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
             5% { opacity: 0.6; }
             95% { opacity: 0.6; }
-            100% {
-                transform: translateY(-20vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        .geometric-shape {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(45deg, rgba(255, 107, 157, 0.1), rgba(78, 205, 196, 0.1));
-            animation: geometric-float 20s ease-in-out infinite;
-        }
-
-        @keyframes geometric-float {
-            0%, 100% { 
-                transform: translateY(0px) translateX(0px) scale(1);
-                opacity: 0.3;
-            }
-            25% { 
-                transform: translateY(-30px) translateX(20px) scale(1.1);
-                opacity: 0.5;
-            }
-            50% { 
-                transform: translateY(-60px) translateX(-10px) scale(0.9);
-                opacity: 0.4;
-            }
-            75% { 
-                transform: translateY(-30px) translateX(-20px) scale(1.2);
-                opacity: 0.6;
-            }
+            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
         }
 
         .container {
@@ -101,11 +68,9 @@
             padding: 15px;
         }
 
-        /* Header moderno */
         .header {
             text-align: center;
             margin-bottom: 30px;
-            position: relative;
         }
 
         .header-content {
@@ -128,30 +93,24 @@
             font-weight: 700;
         }
 
-        .header p {
-            color: var(--medium-text);
-            font-size: 1.1rem;
-            font-weight: 400;
-            margin-bottom: 20px;
+        .connection-status {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.9rem;
+            background: rgba(0, 184, 148, 0.1);
+            color: #00b894;
+            border: 1px solid rgba(0, 184, 148, 0.2);
         }
 
-        .header-icons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            font-size: 2rem;
+        .connection-status.offline {
+            background: rgba(255, 87, 87, 0.1);
+            color: #d63031;
+            border: 1px solid rgba(255, 87, 87, 0.2);
         }
 
-        .icon-bounce {
-            animation: gentle-bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes gentle-bounce {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
-
-        /* Cards modernas */
         .card {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(20px);
@@ -161,8 +120,6 @@
             box-shadow: var(--shadow-light);
             border: 1px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
         .card:hover {
@@ -170,48 +127,28 @@
             box-shadow: var(--shadow-medium);
         }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .card:hover::before {
-            left: 100%;
-        }
-
-        /* Clock moderno */
         .clock-section {
             text-align: center;
-            position: relative;
-            z-index: 1;
         }
 
         .clock-display {
-            background: plum;
+            background: var(--gradient-2);
             color: white;
             padding: 15px;
             border-radius: 20px;
             margin-bottom: 20px;
-            box-shadow: plum;
+            box-shadow: var(--shadow-medium);
         }
 
         .clock {
             font-size: 2rem;
             font-weight: 600;
             margin-bottom: 5px;
-            font-family: 'Poppins', sans-serif;
         }
 
         .date {
             font-size: 0.9rem;
             opacity: 0.9;
-            font-weight: 400;
         }
 
         .love-stats {
@@ -242,95 +179,90 @@
             margin-top: 5px;
         }
 
-        /* Calendario moderno - MEJORADO PARA MÓVILES */
-        .calendar-section h2 {
+        .section-title {
             font-family: 'Playfair Display', serif;
             color: var(--primary-pink);
             font-size: 1.8rem;
             margin-bottom: 20px;
             text-align: center;
-            position: relative;
-            z-index: 1;
         }
 
-        .turn-indicator {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 12px;
-            border-radius: 15px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            position: relative;
-            z-index: 1;
-            background: rgba(78, 205, 196, 0.1);
-            border: 2px solid var(--accent-blue);
-            color: var(--accent-blue);
+        /* ===== ESTILOS DEL CALENDARIO ===== */
+        .calendar-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: var(--shadow-light);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .calendar-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .calendar-nav {
-            background: var(--gradient-2);
-            border: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .calendar-nav-btn {
+            background: var(--gradient-3);
             color: white;
+            border: none;
+            border-radius: 50%;
             width: 40px;
             height: 40px;
-            border-radius: 50%;
             cursor: pointer;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
             box-shadow: var(--shadow-light);
-            flex-shrink: 0;
         }
 
-        .calendar-nav:hover {
-            transform: scale(1.1);
+        .calendar-nav-btn:hover {
+            transform: translateY(-2px);
             box-shadow: var(--shadow-medium);
         }
 
-        .calendar-month {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            color: var(--primary-pink);
+        .calendar-month-year {
+            font-size: 1.3rem;
             font-weight: 600;
+            color: var(--primary-pink);
+            min-width: 200px;
             text-align: center;
-            flex: 1;
-            margin: 0 10px;
+        }
+
+        .calendar-turn-info {
+            background: var(--gradient-4);
+            color: var(--dark-text);
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
         }
 
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 3px;
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            max-width: 100%;
-            overflow: hidden;
+            gap: 8px;
+            margin-bottom: 20px;
         }
 
         .calendar-day-header {
             text-align: center;
             font-weight: 600;
             color: var(--medium-text);
-            padding: 8px 4px;
-            font-size: 0.75rem;
-            background: rgba(255, 107, 157, 0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 30px;
+            padding: 10px 5px;
+            font-size: 0.9rem;
         }
 
         .calendar-day {
@@ -338,62 +270,57 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
-            position: relative;
             font-weight: 500;
-            font-size: 0.85rem;
+            position: relative;
             background: rgba(255, 255, 255, 0.5);
-            border: 2px solid transparent;
-            min-height: 35px;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            border: 1px solid rgba(255, 107, 157, 0.1);
+        }
+
+        .calendar-day:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-light);
+        }
+
+        .calendar-day.other-month {
+            color: #ccc;
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .calendar-day.today {
             background: var(--gradient-2);
             color: white;
-            font-weight: 600;
+            font-weight: 700;
             box-shadow: var(--shadow-medium);
         }
 
-        .calendar-day.past {
-            background: rgba(255, 107, 157, 0.1);
-            color: var(--primary-pink);
+        .calendar-day.has-phrase {
+            background: var(--gradient-4);
+            color: var(--dark-text);
+            font-weight: 600;
         }
 
-        .calendar-day.future {
-            background: rgba(200, 200, 200, 0.1);
-            color: #ccc;
-            cursor: not-allowed;
+        .calendar-day.has-phrase::after {
+            content: '💕';
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            font-size: 0.7rem;
         }
 
         .calendar-day.nini-turn {
-            border-color: var(--primary-pink);
-            background: rgba(255, 107, 157, 0.1);
+            border: 2px solid var(--primary-pink);
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(255, 107, 157, 0.3) 100%);
         }
 
         .calendar-day.jota-turn {
-            border-color: var(--accent-blue);
-            background: rgba(78, 205, 196, 0.1);
+            border: 2px solid var(--accent-blue);
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1) 0%, rgba(78, 205, 196, 0.3) 100%);
         }
 
-        .calendar-day.has-entry::after {
-            content: '💝';
-            position: absolute;
-            top: 1px;
-            right: 1px;
-            font-size: 0.6rem;
-        }
-
-        .calendar-day:hover:not(.future) {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-light);
-        }
-
-        /* Modal moderno */
-        .modal {
+        .phrase-modal {
             display: none;
             position: fixed;
             top: 0;
@@ -401,37 +328,82 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            padding: 15px;
+            backdrop-filter: blur(5px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
 
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
+        .phrase-modal.show {
+            display: flex;
+        }
+
+        .phrase-modal-content {
+            background: white;
             border-radius: 20px;
-            padding: 25px;
-            width: calc(100% - 30px);
-            max-width: 450px;
-            max-height: 90vh;
-            overflow-y: auto;
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
             box-shadow: var(--shadow-heavy);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            transform: scale(0.9);
+            transition: all 0.3s ease;
         }
 
-        .modal h3 {
-            color: var(--primary-pink);
-            margin-bottom: 15px;
+        .phrase-modal.show .phrase-modal-content {
+            transform: scale(1);
+        }
+
+        .phrase-modal-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .phrase-modal-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
-            text-align: center;
+            color: var(--primary-pink);
+            margin-bottom: 10px;
         }
 
-        /* Formularios modernos */
+        .phrase-modal-date {
+            color: var(--medium-text);
+            font-size: 0.9rem;
+        }
+
+        .phrase-modal-turn {
+            background: var(--gradient-4);
+            padding: 10px 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .phrase-form {
+            margin-bottom: 20px;
+        }
+
+        .phrase-display {
+            background: rgba(255, 107, 157, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-pink);
+            margin-bottom: 15px;
+        }
+
+        .phrase-text {
+            font-style: italic;
+            color: var(--dark-text);
+            margin-bottom: 8px;
+        }
+
+        .phrase-author {
+            font-size: 0.85rem;
+            color: var(--medium-text);
+            text-align: right;
+        }
+
         .form-group {
             margin-bottom: 15px;
         }
@@ -453,7 +425,6 @@
             outline: none;
             border-color: var(--primary-pink);
             background: rgba(255, 107, 157, 0.1);
-            transform: translateY(-1px);
             box-shadow: var(--shadow-light);
         }
 
@@ -484,7 +455,6 @@
             transition: all 0.3s ease;
             font-weight: 500;
             box-shadow: var(--shadow-light);
-            font-size: 0.9rem;
         }
 
         .file-upload-btn:hover {
@@ -492,7 +462,6 @@
             box-shadow: var(--shadow-medium);
         }
 
-        /* Botones modernos */
         .btn {
             padding: 12px 20px;
             border: none;
@@ -505,10 +474,7 @@
             transition: all 0.3s ease;
             box-shadow: var(--shadow-light);
             font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
+            width: 100%;
         }
 
         .btn:hover {
@@ -516,25 +482,31 @@
             box-shadow: var(--shadow-medium);
         }
 
-        .btn-secondary {
-            background: linear-gradient(135deg, #74b9ff, #0984e3);
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
-        .btn-group {
+        .btn-secondary {
+            background: var(--gradient-3);
+        }
+
+        .btn-close {
+            background: #95a5a6;
+            width: auto;
+            padding: 8px 15px;
+        }
+
+        .modal-actions {
             display: flex;
             gap: 10px;
-            justify-content: center;
             flex-wrap: wrap;
         }
 
-        /* Secciones de contenido */
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-pink);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            text-align: center;
-            position: relative;
+        .modal-actions .btn {
+            flex: 1;
+            min-width: 120px;
         }
 
         .content-grid {
@@ -595,13 +567,11 @@
             box-shadow: var(--shadow-light);
         }
 
-        /* Estados de carga y error */
         .loading {
             text-align: center;
             color: var(--primary-pink);
             font-style: italic;
             padding: 30px 15px;
-            font-size: 0.9rem;
         }
 
         .error {
@@ -611,7 +581,6 @@
             border-radius: 12px;
             border-left: 4px solid #d63031;
             margin-bottom: 15px;
-            font-size: 0.9rem;
         }
 
         .success {
@@ -621,7 +590,6 @@
             border-radius: 12px;
             border-left: 4px solid #00b894;
             margin-bottom: 15px;
-            font-size: 0.9rem;
         }
 
         .empty-state {
@@ -632,187 +600,62 @@
             background: rgba(255, 107, 157, 0.05);
             border-radius: 15px;
             border: 2px dashed rgba(255, 107, 157, 0.2);
-            font-size: 0.9rem;
         }
 
-        /* Responsive mejorado */
         @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
+            .container { padding: 10px; }
+            .header h1 { font-size: 2.2rem; }
+            .card { padding: 15px; }
+            .clock { font-size: 1.8rem; }
+            .love-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
             
-            .header h1 {
-                font-size: 2.2rem;
-            }
-            
-            .header-content {
-                padding: 20px 15px;
-            }
-            
-            .card {
-                padding: 15px;
-                margin-bottom: 20px;
-                border-radius: 15px;
-            }
-            
-            .clock {
-                font-size: 1.8rem;
-            }
-            
-            .love-stats {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
-            }
-            
-            .stat-item {
-                padding: 10px 8px;
-            }
-            
-            .stat-number {
-                font-size: 1.1rem;
-            }
-            
-            .stat-label {
-                font-size: 0.7rem;
-            }
-            
-            .calendar-grid {
-                gap: 2px;
-            }
-            
-            .calendar-day {
-                font-size: 0.75rem;
-                min-height: 32px;
-                border-radius: 8px;
-            }
-            
-            .calendar-day-header {
-                font-size: 0.7rem;
-                padding: 6px 2px;
-                min-height: 28px;
-            }
-            
-            .calendar-month {
-                font-size: 1.2rem;
-                margin: 0 8px;
+            .calendar-header {
+                flex-direction: column;
+                gap: 15px;
             }
             
             .calendar-nav {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
+                order: 2;
             }
             
-            .modal-content {
-                width: calc(100% - 20px);
-                padding: 20px 15px;
-                max-height: 85vh;
+            .calendar-turn-info {
+                order: 1;
+                text-align: center;
             }
             
-            .modal h3 {
-                font-size: 1.3rem;
+            .calendar-month-year {
+                order: 3;
             }
             
-            .btn-group {
-                flex-direction: column;
-                gap: 8px;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
-                padding: 10px 15px;
-                font-size: 0.85rem;
-            }
-            
-            .section-title {
-                font-size: 1.5rem;
-            }
-            
-            .content-meta {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 5px;
-            }
-            
-            .memory-image {
-                max-height: 200px;
-            }
-        }
-
-        /* Responsive extra pequeño */
-        @media (max-width: 480px) {
-            .container {
-                padding: 8px;
-            }
-            
-            .header h1 {
-                font-size: 1.9rem;
+            .calendar-grid {
+                gap: 4px;
             }
             
             .calendar-day {
-                font-size: 0.7rem;
-                min-height: 30px;
+                font-size: 0.85rem;
             }
             
-            .calendar-day-header {
-                font-size: 0.65rem;
-                min-height: 26px;
+            .phrase-modal-content {
+                padding: 20px;
+                margin: 10px;
             }
             
-            .calendar-month {
-                font-size: 1.1rem;
+            .modal-actions {
+                flex-direction: column;
             }
             
-            .love-stats {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-            
-            .stat-item {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                text-align: left;
-            }
-            
-            .modal-content {
-                width: calc(100% - 16px);
+            .modal-actions .btn {
+                width: 100%;
             }
         }
 
-        /* Animaciones de entrada */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .fade-in {
             animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .fade-in:nth-child(2) { animation-delay: 0.1s; }
-        .fade-in:nth-child(3) { animation-delay: 0.2s; }
-        .fade-in:nth-child(4) { animation-delay: 0.3s; }
-
-        /* Ajustes adicionales para asegurar que no se corte nada */
-        @media (max-width: 360px) {
-            .calendar-day {
-                font-size: 0.65rem;
-                min-height: 28px;
-            }
-            
-            .calendar-day-header {
-                font-size: 0.6rem;
-                min-height: 24px;
-                padding: 4px 2px;
-            }
         }
     </style>
 </head>
@@ -822,13 +665,13 @@
     <div class="container">
         <header class="header fade-in">
             <div class="header-content">
-                   <img src="https://i.gifer.com/origin/36/36bcb36e9832e37c993063a41da0fbc4_w200.gif" alt="Descripción" width="100" height="150">
-                <h1>Nini & Jota</h1>
-                <p>Nuestro espacio de amor uwu</p>
-                <div class="header-icons">
-                   
-                 
+                <div id="connectionStatus" class="connection-status">
+                    🔄 Configurando conexión...
                 </div>
+                <img src="https://i.gifer.com/origin/36/36bcb36e9832e37c993063a41da0fbc4_w200.gif" alt="Descripción" style="display:block;margin:0 auto;width:150px;height:auto;border-radius:12px;">
+
+                <h1>Nini ❤️ Jota</h1>
+                <p>Nuestro espacio de amor uwu</p>
             </div>
         </header>
 
@@ -836,10 +679,7 @@
         <div class="card fade-in">
             <div class="clock-section">
                 <div class="clock-display">
-                    <img src="https://i.gifer.com/7V0.gif" alt="Descripción" width="200" height="200">
                     <div class="clock" id="clock">00:00:00</div>
-                    
-
                     <div class="date" id="date">Cargando fecha...</div>
                 </div>
                 
@@ -853,8 +693,12 @@
                         <span class="stat-label">Recuerdos</span>
                     </div>
                     <div class="stat-item">
+                        <span class="stat-number" id="totalMessages">0</span>
+                        <span class="stat-label">Mensajes</span>
+                    </div>
+                    <div class="stat-item">
                         <span class="stat-number" id="totalPhrases">0</span>
-                        <span class="stat-label">Frases de amor</span>
+                        <span class="stat-label">Frases del día</span>
                     </div>
                 </div>
             </div>
@@ -862,45 +706,54 @@
 
         <!-- Sección del calendario -->
         <div class="card fade-in">
-            <h2 class="section-title">📅 Nuestro Calendario de Amor</h2>
+            <h2 class="section-title">📅 Calendario de Frases del Día</h2>
             
-            <div id="turnIndicator" class="turn-indicator">
-                <div>🎯 Turno actual: <span id="currentTurn">Calculando...</span></div>
-            </div>
-            
-            <div class="calendar-header">
-                <button class="calendar-nav" id="prevMonth" onclick="changeMonth(-1)">‹</button>
-                <div class="calendar-month" id="currentMonth">Enero 2025</div>
-                <button class="calendar-nav" id="nextMonth" onclick="changeMonth(1)">›</button>
-            </div>
-            
-            <div class="calendar-grid" id="calendar">
-                <!-- Calendario se genera dinámicamente -->
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <div class="calendar-nav">
+                        <button class="calendar-nav-btn" onclick="LoveApp.changeMonth(-1)">‹</button>
+                        <div class="calendar-month-year" id="calendarMonthYear">Enero 2024</div>
+                        <button class="calendar-nav-btn" onclick="LoveApp.changeMonth(1)">›</button>
+                    </div>
+                    <div class="calendar-turn-info" id="calendarTurnInfo">
+                        🌟 Hoy le toca a: Cargando...
+                    </div>
+                </div>
+                
+                <div class="calendar-grid" id="calendarGrid">
+                    <div class="calendar-day-header">Dom</div>
+                    <div class="calendar-day-header">Lun</div>
+                    <div class="calendar-day-header">Mar</div>
+                    <div class="calendar-day-header">Mié</div>
+                    <div class="calendar-day-header">Jue</div>
+                    <div class="calendar-day-header">Vie</div>
+                    <div class="calendar-day-header">Sáb</div>
+                </div>
             </div>
         </div>
 
-        <!-- Sección de frases -->
+        <!-- Sección de mensajes de amor -->
         <div class="card fade-in">
-            <h2 class="section-title">💭 Frases de Amor</h2>
+            <h2 class="section-title">💌 Mensajes de Amor</h2>
             
             <div class="form-group">
-                <select class="form-select" id="phraseAuthor">
+                <select class="form-select" id="messageAuthor">
                     <option value="Nini">💖 Nini</option>
                     <option value="Jota">💙 Jota</option>
                 </select>
             </div>
             
             <div class="form-group">
-                <input type="text" class="form-input" id="phraseText" 
-                       placeholder="Escribe una frase bonita para tu amor..." maxlength="200">
+                <textarea class="form-textarea" id="messageText" 
+                         placeholder="Escribe un mensaje bonito para tu amor..." maxlength="500"></textarea>
             </div>
             
-            <button class="btn" onclick="addPhrase()">
-                ✨ Agregar Frase
+            <button class="btn" onclick="LoveApp.addMessage()" id="addMessageBtn">
+                ✨ Enviar Mensaje
             </button>
             
-            <div class="content-grid" id="phrasesList" style="margin-top: 25px;">
-                <div class="loading">Cargando frases de amor... 💕</div>
+            <div class="content-grid" id="messagesList" style="margin-top: 25px;">
+                <div class="loading">Cargando mensajes de amor... 💕</div>
             </div>
         </div>
 
@@ -909,15 +762,15 @@
             <h2 class="section-title">📸 Galería de Recuerdos</h2>
             
             <div class="form-group">
-                <input type="text" class="form-input" id="memoryTitle" 
-                       placeholder="Título del recuerdo..." maxlength="100">
-            </div>
-            
-            <div class="form-group">
                 <select class="form-select" id="memoryAuthor">
                     <option value="Nini">💖 Nini</option>
                     <option value="Jota">💙 Jota</option>
                 </select>
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-input" id="memoryTitle" 
+                       placeholder="Título del recuerdo..." maxlength="100">
             </div>
             
             <div class="form-group">
@@ -929,7 +782,7 @@
                 </div>
             </div>
             
-            <button class="btn" onclick="addMemory()">
+            <button class="btn" onclick="LoveApp.addMemory()" id="addMemoryBtn">
                 ✨ Guardar Recuerdo
             </button>
             
@@ -939,692 +792,956 @@
         </div>
     </div>
 
-    <!-- Modal del calendario -->
-    <div class="modal" id="calendarModal">
-        <div class="modal-content">
-            <h3 id="modalDate">Fecha seleccionada</h3>
-            <div id="modalContent">
-                <!-- Contenido dinámico -->
+    <!-- Modal para frases del día -->
+    <div class="phrase-modal" id="phraseModal">
+        <div class="phrase-modal-content">
+            <div class="phrase-modal-header">
+                <div class="phrase-modal-title" id="phraseModalTitle">Frase del Día</div>
+                <div class="phrase-modal-date" id="phraseModalDate">Fecha</div>
+            </div>
+            
+            <div class="phrase-modal-turn" id="phraseModalTurn">
+                Es el turno de: Cargando...
+            </div>
+            
+            <div id="phraseDisplay" style="display: none;"></div>
+            
+            <div id="phraseForm" class="phrase-form">
+                <div class="form-group">
+                    <textarea class="form-textarea" id="phraseText" 
+                             placeholder="Escribe una frase bonita para este día..." maxlength="300"></textarea>
+                </div>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="btn" onclick="LoveApp.saveDailyPhrase()" id="savePhraseBtn">
+                    ✨ Guardar Frase
+                </button>
+                <button class="btn btn-close" onclick="LoveApp.closePhraseModal()">
+                    Cerrar
+                </button>
             </div>
         </div>
     </div>
 
+    <!-- Incluir Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script>
-        // ===== CONFIGURACIÓN DE SUPABASE =====
-        // IMPORTANTE: Reemplaza con tus credenciales de Supabase
-        const SUPABASE_URL = 'https://vcnpdfobafoixqhvtymg.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZjbnBkZm9iYWZvaXhxaHZ0eW1nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNzE4NDMsImV4cCI6MjA2ODY0Nzg0M30.-pM3Fx5EWdSUZs3lT3xBrKak4JzX0N0DleV6OU74fVM';
-
-        let supabaseClient;
-        let isSupabaseConfigured = false;
-
-        // Inicializar Supabase solo si las credenciales están configuradas
-        if (SUPABASE_URL !== 'TU_SUPABASE_URL_AQUI' && SUPABASE_ANON_KEY !== 'TU_SUPABASE_ANON_KEY_AQUI') {
-            try {
-                // CORRECCIÓN: Usar window.supabase en lugar de supabase
-                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-                isSupabaseConfigured = true;
-                console.log('✅ Supabase configurado correctamente');
-            } catch (error) {
-                console.error('Error configurando Supabase:', error);
-                isSupabaseConfigured = false;
-            }
-        } else {
-            console.warn('⚠️ Supabase no está configurado. Usando almacenamiento local.');
-        }
-
-        // ===== VARIABLES GLOBALES =====
-        let currentDate = new Date();
-        let currentMonth = new Date().getMonth();
-        let currentYear = new Date().getFullYear();
-        let calendarEntries = {};
-        let phrases = [];
-        let memories = [];
-
-        // Fecha de inicio de la relación (puedes cambiarla)
-        const relationshipStart = new Date('2024-10-20'); // Cambia esta fecha
-
-        // ===== INICIALIZACIÓN =====
-        document.addEventListener('DOMContentLoaded', async function() {
-            createAnimatedBackground();
-            updateClock();
-            await loadAllData();
-            generateCalendar();
-            updateTurnIndicator();
-            updateStats();
+        // ===== APLICACIÓN PRINCIPAL =====
+        const LoveApp = {
+            // Configuración de Supabase
+            supabase: null,
+            isConnected: false,
             
-            setInterval(updateClock, 1000);
-            setInterval(createFloatingHeart, 5000);
+            // Datos
+            messages: [],
+            memories: [],
+            dailyPhrases: [],
             
-            // Cerrar modal al hacer clic fuera
-            document.getElementById('calendarModal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeModal();
-                }
-            });
-
-            // Agregar animaciones de entrada
-            const cards = document.querySelectorAll('.card');
-            cards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.classList.add('fade-in');
-                }, index * 200);
-            });
-        });
-
-        // ===== FUNCIONES DE SUPABASE =====
-        async function initializeDatabase() {
-            if (!isSupabaseConfigured) return;
-
-            try {
-                // Crear tablas si no existen
-                const { error: phrasesError } = await supabaseClient.rpc('create_phrases_table');
-                const { error: memoriesError } = await supabaseClient.rpc('create_memories_table');
-                const { error: calendarError } = await supabaseClient.rpc('create_calendar_entries_table');
+            // Fecha de inicio de la relación
+            relationshipStart: new Date('2024-10-20'),
+            
+            // Estado del calendario
+            currentDate: new Date(),
+            selectedDate: null,
+            
+            // ===== FUNCIONES DE FECHA CON ZONA HORARIA DE CHILE =====
+            getChileDate() {
+                // Crear fecha en zona horaria de Chile (UTC-3 o UTC-4 dependiendo del horario de verano)
+                const now = new Date();
+                const chileOffset = -3; // Chile está en UTC-3 la mayor parte del año
+                const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+                const chileTime = new Date(utc + (chileOffset * 3600000));
+                return chileTime;
+            },
+            
+            formatDateChile(date) {
+                // Asegurar que usamos la zona horaria de Chile
+                return new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
+                    .toISOString().split('T')[0];
+            },
+            
+            isSameDay(date1, date2) {
+                // Comparar fechas usando zona horaria de Chile
+                return this.formatDateChile(date1) === this.formatDateChile(date2);
+            },
+            
+            // ===== INICIALIZACIÓN =====
+            async init() {
+                console.log('🚀 Iniciando aplicación de amor...');
+                console.log('🇨🇱 Configurado para zona horaria de Chile (Calama)');
                 
-                if (phrasesError || memoriesError || calendarError) {
-                    console.log('Las tablas ya existen o se crearon correctamente');
+                // Mostrar instrucciones de configuración
+                this.showSetupInstructions();
+                
+                // Crear fondo animado
+                this.createAnimatedBackground();
+                
+                // Inicializar reloj
+                this.updateClock();
+                setInterval(() => this.updateClock(), 1000);
+                
+                // Inicializar efectos
+                setInterval(() => this.createFloatingHeart(), 5000);
+                
+                // Intentar conectar a Supabase
+                await this.initializeSupabase();
+                
+                // Inicializar calendario
+                this.renderCalendar();
+                
+                // Agregar animaciones de entrada
+                this.addEntryAnimations();
+                
+                console.log('✅ Aplicación inicializada');
+            },
+            
+            // ===== CONFIGURACIÓN DE SUPABASE =====
+            async initializeSupabase() {
+                // INSTRUCCIONES: Reemplaza estas variables con los valores de tu proyecto Supabase
+                const SUPABASE_URL = 'https://qumdmfeamvtrevcjfjvl.supabase.co';
+                const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1bWRtZmVhbXZ0cmV2Y2pmanZsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQzMjY4MDYsImV4cCI6MjA2OTkwMjgwNn0.I8RxHA63ZmTukDeV3h2F8pv0Z8JZ7B7sHOubI0hUOKk';
+                
+                // Verificar si las variables están configuradas
+                if (SUPABASE_URL.includes('tu-proyecto') || SUPABASE_ANON_KEY.includes('tu-anon-key')) {
+                    this.updateConnectionStatus('⚠️ Necesitas configurar las credenciales de Supabase', false);
+                    return;
                 }
-            } catch (error) {
-                console.error('Error inicializando base de datos:', error);
-            }
-        }
-
-        async function loadAllData() {
-            await loadPhrases();
-            await loadMemories();
-            await loadCalendarEntries();
-        }
-
-        // ===== FUNCIONES DE CARGA DE DATOS =====
-        async function loadPhrases() {
-            if (isSupabaseConfigured) {
+                
                 try {
-                    const { data, error } = await supabaseClient
-                        .from('phrases')
+                    this.updateConnectionStatus('🔄 Conectando a Supabase...', false);
+                    
+                    // Inicializar cliente
+                    this.supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                    
+                    // Verificar conexión
+                    const { data, error } = await this.supabase
+                        .from('love_messages')
+                        .select('count', { count: 'exact', head: true });
+                    
+                    if (error) {
+                        console.error('Error verificando conexión:', error);
+                        throw new Error('Error de conexión. Verifica las credenciales.');
+                    }
+                    
+                    this.isConnected = true;
+                    this.updateConnectionStatus('✅ Conectado - Sincronización en tiempo real activada', true);
+                    
+                    // Cargar datos iniciales
+                    await this.loadAllData();
+                    
+                    // Configurar actualizaciones en tiempo real
+                    this.setupRealtimeSubscriptions();
+                    
+                    console.log('✅ Supabase conectado correctamente');
+                    
+                } catch (error) {
+                    console.error('❌ Error conectando a Supabase:', error);
+                    this.updateConnectionStatus('❌ Error de conexión - Revisa la configuración', false);
+                    this.showMessage('❌ Error conectando a Supabase. Revisa la configuración.', 'error');
+                }
+            },
+            
+            // ===== SUSCRIPCIONES EN TIEMPO REAL =====
+            setupRealtimeSubscriptions() {
+                // Suscribirse a mensajes
+                this.supabase
+                    .channel('love_messages_channel')
+                    .on('postgres_changes', 
+                        { event: '*', schema: 'public', table: 'love_messages' }, 
+                        (payload) => {
+                            console.log('🔄 Cambio en mensajes:', payload);
+                            this.loadMessages();
+                        }
+                    )
+                    .subscribe();
+
+                // Suscribirse a recuerdos
+                this.supabase
+                    .channel('love_memories_channel')
+                    .on('postgres_changes', 
+                        { event: '*', schema: 'public', table: 'love_memories' }, 
+                        (payload) => {
+                            console.log('🔄 Cambio en recuerdos:', payload);
+                            this.loadMemories();
+                        }
+                    )
+                    .subscribe();
+
+                // Suscribirse a frases diarias
+                this.supabase
+                    .channel('daily_phrases_channel')
+                    .on('postgres_changes', 
+                        { event: '*', schema: 'public', table: 'daily_phrases' }, 
+                        (payload) => {
+                            console.log('🔄 Cambio en frases diarias:', payload);
+                            this.loadDailyPhrases();
+                        }
+                    )
+                    .subscribe();
+
+                console.log('🔴 Suscripciones en tiempo real configuradas');
+            },
+            
+            // ===== CARGA DE DATOS =====
+            async loadAllData() {
+                await Promise.all([
+                    this.loadMessages(),
+                    this.loadMemories(),
+                    this.loadDailyPhrases()
+                ]);
+                this.updateStats();
+                this.renderCalendar();
+            },
+            
+            async loadMessages() {
+                const container = document.getElementById('messagesList');
+                
+                if (!this.isConnected) {
+                    container.innerHTML = '<div class="error">Sin conexión a la base de datos</div>';
+                    return;
+                }
+                
+                container.innerHTML = '<div class="loading">Cargando mensajes de amor... 💕</div>';
+                
+                try {
+                    const { data, error } = await this.supabase
+                        .from('love_messages')
                         .select('*')
                         .order('created_at', { ascending: false });
                     
                     if (error) throw error;
-                    phrases = data || [];
+                    
+                    this.messages = data || [];
+                    this.displayMessages();
+                    
+                    console.log('✅ Mensajes cargados:', this.messages.length);
+                    
                 } catch (error) {
-                    console.error('Error cargando frases:', error);
-                    phrases = JSON.parse(localStorage.getItem('phrases') || '[]');
+                    console.error('❌ Error cargando mensajes:', error);
+                    container.innerHTML = '<div class="error">Error cargando mensajes</div>';
                 }
-            } else {
-                phrases = JSON.parse(localStorage.getItem('phrases') || '[]');
-            }
-            displayPhrases();
-        }
-
-        async function loadMemories() {
-            if (isSupabaseConfigured) {
+            },
+            
+            async loadMemories() {
+                const container = document.getElementById('memoriesGrid');
+                
+                if (!this.isConnected) {
+                    container.innerHTML = '<div class="error">Sin conexión a la base de datos</div>';
+                    return;
+                }
+                
+                container.innerHTML = '<div class="loading">Cargando recuerdos... 💕</div>';
+                
                 try {
-                    const { data, error } = await supabaseClient
-                        .from('memories')
+                    const { data, error } = await this.supabase
+                        .from('love_memories')
                         .select('*')
                         .order('created_at', { ascending: false });
                     
                     if (error) throw error;
-                    memories = data || [];
-                } catch (error) {
-                    console.error('Error cargando recuerdos:', error);
-                    memories = JSON.parse(localStorage.getItem('memories') || '[]');
-                }
-            } else {
-                memories = JSON.parse(localStorage.getItem('memories') || '[]');
-            }
-            displayMemories();
-        }
-
-        async function loadCalendarEntries() {
-            if (isSupabaseConfigured) {
-                try {
-                    const { data, error } = await supabaseClient
-                        .from('calendar_entries')
-                        .select('*');
                     
-                    if (error) throw error;
+                    this.memories = data || [];
+                    this.displayMemories();
                     
-                    calendarEntries = {};
-                    data?.forEach(entry => {
-                        calendarEntries[entry.date] = entry;
-                    });
-                } catch (error) {
-                    console.error('Error cargando entradas del calendario:', error);
-                    calendarEntries = JSON.parse(localStorage.getItem('calendarEntries') || '{}');
-                }
-            } else {
-                calendarEntries = JSON.parse(localStorage.getItem('calendarEntries') || '{}');
-            }
-        }
-
-        // ===== FUNCIONES DE GUARDADO =====
-        async function savePhrase(phrase) {
-            if (isSupabaseConfigured) {
-                try {
-                    const { data, error } = await supabaseClient
-                        .from('phrases')
-                        .insert([phrase])
-                        .select();
+                    console.log('✅ Recuerdos cargados:', this.memories.length);
                     
-                    if (error) throw error;
-                    return data[0];
                 } catch (error) {
-                    console.error('Error guardando frase:', error);
-                    // Fallback a localStorage
-                    phrases.unshift(phrase);
-                    localStorage.setItem('phrases', JSON.stringify(phrases));
-                    return phrase;
+                    console.error('❌ Error cargando recuerdos:', error);
+                    container.innerHTML = '<div class="error">Error cargando recuerdos</div>';
                 }
-            } else {
-                phrases.unshift(phrase);
-                localStorage.setItem('phrases', JSON.stringify(phrases));
-                return phrase;
-            }
-        }
-
-        async function saveMemory(memory) {
-            if (isSupabaseConfigured) {
-                try {
-                    const { data, error } = await supabaseClient
-                        .from('memories')
-                        .insert([memory])
-                        .select();
-                    
-                    if (error) throw error;
-                    return data[0];
-                } catch (error) {
-                    console.error('Error guardando recuerdo:', error);
-                    // Fallback a localStorage
-                    memories.unshift(memory);
-                    localStorage.setItem('memories', JSON.stringify(memories));
-                    return memory;
-                }
-            } else {
-                memories.unshift(memory);
-                localStorage.setItem('memories', JSON.stringify(memories));
-                return memory;
-            }
-        }
-
-        async function saveCalendarEntry(entry) {
-            if (isSupabaseConfigured) {
-                try {
-                    const { data, error } = await supabaseClient
-                        .from('calendar_entries')
-                        .upsert([entry])
-                        .select();
-                    
-                    if (error) throw error;
-                    return data[0];
-                } catch (error) {
-                    console.error('Error guardando entrada del calendario:', error);
-                    // Fallback a localStorage
-                    calendarEntries[entry.date] = entry;
-                    localStorage.setItem('calendarEntries', JSON.stringify(calendarEntries));
-                    return entry;
-                }
-            } else {
-                calendarEntries[entry.date] = entry;
-                localStorage.setItem('calendarEntries', JSON.stringify(calendarEntries));
-                return entry;
-            }
-        }
-
-        // ===== FUNCIONES DE RELOJ Y ESTADÍSTICAS =====
-        function updateClock() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('es-ES', {
-                hour12: false,
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            });
+            },
             
-            const dateString = now.toLocaleDateString('es-ES', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-            
-            document.getElementById('clock').textContent = timeString;
-            document.getElementById('date').textContent = dateString;
-        }
-
-        function updateStats() {
-            const daysTogether = Math.floor((new Date() - relationshipStart) / (1000 * 60 * 60 * 24));
-            document.getElementById('daysTogether').textContent = daysTogether;
-            document.getElementById('totalMemories').textContent = memories.length;
-            document.getElementById('totalPhrases').textContent = phrases.length;
-        }
-
-        // ===== FUNCIONES DEL CALENDARIO =====
-        function generateCalendar() {
-            const calendar = document.getElementById('calendar');
-            const monthNames = [
-                'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-                'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
-            ];
-            
-            document.getElementById('currentMonth').textContent = `${monthNames[currentMonth]} ${currentYear}`;
-            
-            const firstDay = new Date(currentYear, currentMonth, 1);
-            const lastDay = new Date(currentYear, currentMonth + 1, 0);
-            const startDate = new Date(firstDay);
-            startDate.setDate(startDate.getDate() - firstDay.getDay());
-            
-            calendar.innerHTML = '';
-            
-            // Headers de días
-            const dayHeaders = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
-            dayHeaders.forEach(day => {
-                const header = document.createElement('div');
-                header.className = 'calendar-day-header';
-                header.textContent = day;
-                calendar.appendChild(header);
-            });
-            
-            // Días del calendario
-            for (let i = 0; i < 42; i++) {
-                const cellDate = new Date(startDate);
-                cellDate.setDate(startDate.getDate() + i);
+            async loadDailyPhrases() {
+                if (!this.isConnected) return;
                 
+                try {
+                    const { data, error } = await this.supabase
+                        .from('daily_phrases')
+                        .select('*')
+                        .order('date', { ascending: false });
+                    
+                    if (error) throw error;
+                    
+                    this.dailyPhrases = data || [];
+                    console.log('✅ Frases diarias cargadas:', this.dailyPhrases.length);
+                    
+                } catch (error) {
+                    console.error('❌ Error cargando frases diarias:', error);
+                }
+            },
+            
+            // ===== FUNCIONES DEL CALENDARIO =====
+            renderCalendar() {
+                const grid = document.getElementById('calendarGrid');
+                if (!grid) return;
+                
+                // Limpiar grid manteniendo headers
+                const headers = grid.querySelectorAll('.calendar-day-header');
+                grid.innerHTML = '';
+                headers.forEach(header => grid.appendChild(header));
+                
+                const year = this.currentDate.getFullYear();
+                const month = this.currentDate.getMonth();
+                
+                // Actualizar título del mes
+                const monthNames = [
+                    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+                ];
+                document.getElementById('calendarMonthYear').textContent = `${monthNames[month]} ${year}`;
+                
+                // Actualizar info de turno para hoy
+                this.updateTurnInfo();
+                
+                // Primer día del mes y cuántos días tiene
+                const firstDay = new Date(year, month, 1);
+                const lastDay = new Date(year, month + 1, 0);
+                const daysInMonth = lastDay.getDate();
+                const startingDayOfWeek = firstDay.getDay();
+                
+                // Días del mes anterior
+                const prevMonth = new Date(year, month - 1);
+                const daysInPrevMonth = new Date(year, month, 0).getDate();
+                
+                for (let i = startingDayOfWeek - 1; i >= 0; i--) {
+                    const day = daysInPrevMonth - i;
+                    const dayElement = this.createDayElement(day, true, new Date(prevMonth.getFullYear(), prevMonth.getMonth(), day));
+                    grid.appendChild(dayElement);
+                }
+                
+                // Días del mes actual
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const date = new Date(year, month, day);
+                    const dayElement = this.createDayElement(day, false, date);
+                    grid.appendChild(dayElement);
+                }
+                
+                // Días del mes siguiente para completar la grid
+                const totalCells = grid.children.length - 7; // Restar headers
+                const remainingCells = 42 - totalCells; // 6 filas × 7 días
+                
+                for (let day = 1; day <= remainingCells; day++) {
+                    const nextMonth = new Date(year, month + 1);
+                    const dayElement = this.createDayElement(day, true, new Date(nextMonth.getFullYear(), nextMonth.getMonth(), day));
+                    grid.appendChild(dayElement);
+                }
+            },
+            
+            createDayElement(day, isOtherMonth, date) {
                 const dayElement = document.createElement('div');
                 dayElement.className = 'calendar-day';
-                dayElement.textContent = cellDate.getDate();
+                dayElement.textContent = day;
+                dayElement.dataset.date = this.formatDateChile(date);
                 
-                const dateString = cellDate.toISOString().split('T')[0];
-                const today = new Date().toISOString().split('T')[0];
+                if (isOtherMonth) {
+                    dayElement.classList.add('other-month');
+                }
                 
-                // Clases de estado
-                if (dateString === today) {
+                // Marcar día de hoy usando fecha de Chile
+                const today = this.getChileDate();
+                if (this.isSameDay(date, today)) {
                     dayElement.classList.add('today');
-                } else if (cellDate < new Date()) {
-                    dayElement.classList.add('past');
-                } else {
-                    dayElement.classList.add('future');
                 }
                 
-                // Determinar turno
-                const daysSinceStart = Math.floor((cellDate - relationshipStart) / (1000 * 60 * 60 * 24));
-                if (daysSinceStart >= 0) {
-                    if (daysSinceStart % 2 === 0) {
-                        dayElement.classList.add('nini-turn');
-                    } else {
-                        dayElement.classList.add('jota-turn');
+                // Verificar si tiene frase
+                const dateString = this.formatDateChile(date);
+                const hasPhrase = this.dailyPhrases.some(phrase => phrase.date === dateString);
+                if (hasPhrase) {
+                    dayElement.classList.add('has-phrase');
+                }
+                
+                // Determinar de quién es el turno
+                const turn = this.getTurnForDate(date);
+                if (turn === 'Nini') {
+                    dayElement.classList.add('nini-turn');
+                } else if (turn === 'Jota') {
+                    dayElement.classList.add('jota-turn');
+                }
+                
+                // Agregar evento click
+                dayElement.addEventListener('click', () => {
+                    if (!isOtherMonth) {
+                        this.openPhraseModal(date);
                     }
-                }
+                });
                 
-                // Verificar si hay entrada
-                if (calendarEntries[dateString]) {
-                    dayElement.classList.add('has-entry');
-                }
-                
-                // Event listener
-                dayElement.addEventListener('click', () => openCalendarModal(dateString));
-                
-                calendar.appendChild(dayElement);
-            }
-        }
-
-        function changeMonth(direction) {
-            currentMonth += direction;
-            if (currentMonth > 11) {
-                currentMonth = 0;
-                currentYear++;
-            } else if (currentMonth < 0) {
-                currentMonth = 11;
-                currentYear--;
-            }
-            generateCalendar();
-        }
-
-        function updateTurnIndicator() {
-            const today = new Date();
-            const daysSinceStart = Math.floor((today - relationshipStart) / (1000 * 60 * 60 * 24));
-            const currentTurnElement = document.getElementById('currentTurn');
+                return dayElement;
+            },
             
-            if (daysSinceStart >= 0) {
-                if (daysSinceStart % 2 === 0) {
-                    currentTurnElement.innerHTML = '💖 <strong>Nini</strong>';
-                    currentTurnElement.style.color = 'var(--primary-pink)';
+            getTurnForDate(date) {
+                // Calcular días desde el inicio de la relación usando zona horaria de Chile
+                const daysSinceStart = Math.floor((date - this.relationshipStart) / (1000 * 60 * 60 * 24));
+                
+                // Alternar turnos cada día (empezando con Nini)
+                return daysSinceStart % 2 === 0 ? 'Nini' : 'Jota';
+            },
+            
+            updateTurnInfo() {
+                const today = this.getChileDate();
+                const todayTurn = this.getTurnForDate(today);
+                const turnInfo = document.getElementById('calendarTurnInfo');
+                
+                if (turnInfo) {
+                    const emoji = todayTurn === 'Nini' ? '💖' : '💙';
+                    turnInfo.innerHTML = `🌟 Hoy le toca a: ${emoji} ${todayTurn}`;
+                }
+            },
+            
+            changeMonth(direction) {
+                this.currentDate.setMonth(this.currentDate.getMonth() + direction);
+                this.renderCalendar();
+            },
+            
+            // ===== MODAL DE FRASES DIARIAS =====
+            openPhraseModal(date) {
+                this.selectedDate = date;
+                const dateString = this.formatDateChile(date);
+                const turn = this.getTurnForDate(date);
+                
+                // Actualizar contenido del modal
+                document.getElementById('phraseModalTitle').textContent = 'Frase del Día';
+                document.getElementById('phraseModalDate').textContent = date.toLocaleDateString('es-CL', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                const emoji = turn === 'Nini' ? '💖' : '💙';
+                document.getElementById('phraseModalTurn').innerHTML = `Es el turno de: ${emoji} ${turn}`;
+                
+                // Verificar si ya existe una frase
+                const existingPhrase = this.dailyPhrases.find(phrase => phrase.date === dateString);
+                
+                if (existingPhrase) {
+                    // Mostrar frase existente
+                    this.showExistingPhrase(existingPhrase);
                 } else {
-                    currentTurnElement.innerHTML = '💙 <strong>Jota</strong>';
-                    currentTurnElement.style.color = 'var(--accent-blue)';
+                    // Mostrar formulario para nueva frase
+                    this.showPhraseForm(turn, date);
                 }
-            } else {
-                currentTurnElement.textContent = 'Aún no han empezado';
-            }
-        }
-
-        // ===== FUNCIONES DEL MODAL =====
-        function openCalendarModal(dateString) {
-            const modal = document.getElementById('calendarModal');
-            const modalDate = document.getElementById('modalDate');
-            const modalContent = document.getElementById('modalContent');
-            
-            const date = new Date(dateString + 'T12:00:00');
-            const formattedDate = date.toLocaleDateString('es-ES', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-            
-            modalDate.textContent = formattedDate;
-            
-            const daysSinceStart = Math.floor((date - relationshipStart) / (1000 * 60 * 60 * 24));
-            let whosTurn = '';
-            
-            if (daysSinceStart >= 0) {
-                whosTurn = daysSinceStart % 2 === 0 ? '💖 Nini' : '💙 Jota';
-            }
-            
-            const entry = calendarEntries[dateString];
-            
-            modalContent.innerHTML = `
-                <div style="margin-bottom: 20px;">
-                    <strong>Turno del día:</strong> ${whosTurn}
-                </div>
                 
-                ${entry ? `
-                    <div class="content-item" style="margin-bottom: 20px;">
-                        <div class="content-meta">
-                            <span class="content-author">${entry.author}</span>
-                            <span class="content-time">${entry.type}</span>
+                // Mostrar modal
+                document.getElementById('phraseModal').classList.add('show');
+            },
+            
+            showExistingPhrase(phrase) {
+                document.getElementById('phraseForm').style.display = 'none';
+                document.getElementById('savePhraseBtn').style.display = 'none';
+                
+                const display = document.getElementById('phraseDisplay');
+                display.innerHTML = `
+                    <div class="phrase-display">
+                        <div class="phrase-text">"${phrase.phrase}"</div>
+                        <div class="phrase-author">— ${phrase.author}</div>
+                    </div>
+                `;
+                display.style.display = 'block';
+            },
+            
+            showPhraseForm(turn, selectedDate) {
+                const today = this.getChileDate();
+                const isToday = this.isSameDay(selectedDate, today);
+                const isPast = selectedDate < today && !this.isSameDay(selectedDate, today);
+                const isFuture = selectedDate > today && !this.isSameDay(selectedDate, today);
+                
+                console.log('📅 Verificando fecha:', {
+                    selectedDate: this.formatDateChile(selectedDate),
+                    today: this.formatDateChile(today),
+                    isToday,
+                    isPast,
+                    isFuture
+                });
+                
+                document.getElementById('phraseDisplay').style.display = 'none';
+                
+                if (isPast) {
+                    // No permitir agregar frases a días pasados
+                    document.getElementById('phraseForm').innerHTML = `
+                        <div class="error">
+                            No se pueden agregar frases a días pasados.
                         </div>
-                        <div class="content-text">${entry.content}</div>
-                        ${entry.image ? `<img src="${entry.image}" class="memory-image" alt="Recuerdo">` : ''}
-                    </div>
-                ` : `
-                    <div class="empty-state">
-                        No hay ninguna entrada para este día ✨
-                    </div>
-                `}
+                    `;
+                    document.getElementById('savePhraseBtn').style.display = 'none';
+                } else if (isToday) {
+                    // Permitir agregar la frase del día actual
+                    document.getElementById('phraseForm').style.display = 'block';
+                    document.getElementById('savePhraseBtn').style.display = 'block';
+                    document.getElementById('phraseText').value = '';
+                    
+                    // Mensaje informativo sobre el turno
+                    const phraseForm = document.getElementById('phraseForm');
+                    const infoDiv = phraseForm.querySelector('.turn-info');
+                    if (infoDiv) infoDiv.remove();
+                    
+                    const turnInfoDiv = document.createElement('div');
+                    turnInfoDiv.className = 'turn-info';
+                    turnInfoDiv.style.cssText = 'background: rgba(255, 107, 157, 0.1); padding: 10px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-size: 0.9rem; color: var(--dark-text);';
+                    turnInfoDiv.innerHTML = `✨ Hoy es tu turno, ${turn}! Escribe una frase bonita para este día.`;
+                    
+                    phraseForm.insertBefore(turnInfoDiv, phraseForm.firstChild);
+                } else if (isFuture) {
+                    // Día futuro
+                    document.getElementById('phraseForm').innerHTML = `
+                        <div style="background: rgba(78, 205, 196, 0.1); padding: 15px; border-radius: 12px; text-align: center; color: var(--dark-text);">
+                            🔮 Este día aún no ha llegado.<br>
+                            Cuando sea ${selectedDate.toLocaleDateString('es-CL')}, ${turn} podrá escribir la frase del día.
+                        </div>
+                    `;
+                    document.getElementById('savePhraseBtn').style.display = 'none';
+                }
+            },
+            
+            async saveDailyPhrase() {
+                if (!this.isConnected) {
+                    this.showMessage('❌ Sin conexión a la base de datos', 'error');
+                    return;
+                }
                 
-                <div class="btn-group" style="margin-top: 20px;">
-                    ${!entry ? `
-                        <button class="btn" onclick="addCalendarEntry('${dateString}', 'note')">
-                            📝 Agregar Nota
-                        </button>
-                        <button class="btn btn-secondary" onclick="addCalendarEntry('${dateString}', 'memory')">
-                            📸 Agregar Recuerdo
-                        </button>
-                    ` : `
-                        <button class="btn btn-secondary" onclick="editCalendarEntry('${dateString}')">
-                            ✏️ Editar
-                        </button>
-                        <button class="btn" onclick="deleteCalendarEntry('${dateString}')" 
-                                style="background: linear-gradient(135deg, #ff7675, #d63031);">
-                            🗑️ Eliminar
-                        </button>
-                    `}
-                    <button class="btn btn-secondary" onclick="closeModal()">
-                        ❌ Cerrar
-                    </button>
-                </div>
-            `;
-            
-            modal.style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('calendarModal').style.display = 'none';
-        }
-
-        async function addCalendarEntry(dateString, type) {
-            const content = prompt(`Escribe tu ${type === 'note' ? 'nota' : 'recuerdo'}:`);
-            if (!content) return;
-            
-            const author = prompt('¿Quién escribe? (Nini/Jota):', 'Nini');
-            if (!author) return;
-            
-            const entry = {
-                date: dateString,
-                author: author,
-                type: type === 'note' ? '📝 Nota' : '📸 Recuerdo',
-                content: content,
-                created_at: new Date().toISOString()
-            };
-            
-            if (type === 'memory') {
-                const imageInput = document.createElement('input');
-                imageInput.type = 'file';
-                imageInput.accept = 'image/*';
-                imageInput.onchange = async function(e) {
-                    const file = e.target.files[0];
-                    if (file) {
-                        entry.image = await fileToBase64(file);
-                    }
-                    await saveCalendarEntry(entry);
-                    generateCalendar();
-                    closeModal();
-                };
-                imageInput.click();
-            } else {
-                await saveCalendarEntry(entry);
-                generateCalendar();
-                closeModal();
-            }
-        }
-
-        async function deleteCalendarEntry(dateString) {
-            if (!confirm('¿Estás seguro de que quieres eliminar esta entrada?')) return;
-            
-            if (isSupabaseConfigured) {
+                const phraseText = document.getElementById('phraseText').value.trim();
+                const turn = this.getTurnForDate(this.selectedDate);
+                const dateString = this.formatDateChile(this.selectedDate);
+                const button = document.getElementById('savePhraseBtn');
+                
+                if (!phraseText) {
+                    this.showMessage('Por favor, escribe una frase bonita 💕', 'error');
+                    return;
+                }
+                
+                button.disabled = true;
+                button.textContent = '⏳ Guardando...';
+                
                 try {
-                    const { error } = await supabaseClient
-                        .from('calendar_entries')
-                        .delete()
-                        .eq('date', dateString);
+                    const { error } = await this.supabase
+                        .from('daily_phrases')
+                        .insert([{
+                            date: dateString,
+                            author: turn,
+                            phrase: phraseText
+                        }]);
                     
                     if (error) throw error;
+                    
+                    this.showMessage('✨ Frase guardada con amor', 'success');
+                    this.closePhraseModal();
+                    
                 } catch (error) {
-                    console.error('Error eliminando entrada:', error);
+                    console.error('❌ Error guardando frase:', error);
+                    this.showMessage('❌ Error guardando frase', 'error');
+                } finally {
+                    button.disabled = false;
+                    button.textContent = '✨ Guardar Frase';
                 }
-            }
+            },
             
-            delete calendarEntries[dateString];
-            localStorage.setItem('calendarEntries', JSON.stringify(calendarEntries));
+            closePhraseModal() {
+                document.getElementById('phraseModal').classList.remove('show');
+                this.selectedDate = null;
+            },
             
-            generateCalendar();
-            closeModal();
-        }
-
-        // ===== FUNCIONES DE FRASES =====
-        async function addPhrase() {
-            const text = document.getElementById('phraseText').value.trim();
-            const author = document.getElementById('phraseAuthor').value;
+            // ===== AGREGAR CONTENIDO =====
+            async addMessage() {
+                if (!this.isConnected) {
+                    this.showMessage('❌ Sin conexión a la base de datos', 'error');
+                    return;
+                }
+                
+                const text = document.getElementById('messageText').value.trim();
+                const author = document.getElementById('messageAuthor').value;
+                const button = document.getElementById('addMessageBtn');
+                
+                if (!text) {
+                    this.showMessage('Por favor, escribe un mensaje bonito 💕', 'error');
+                    return;
+                }
+                
+                button.disabled = true;
+                button.textContent = '⏳ Enviando...';
+                
+                try {
+                    const { error } = await this.supabase
+                        .from('love_messages')
+                        .insert([{
+                            author: author,
+                            message: text
+                        }]);
+                    
+                    if (error) throw error;
+                    
+                    // Limpiar formulario
+                    document.getElementById('messageText').value = '';
+                    
+                    this.showMessage('✨ Mensaje enviado con amor', 'success');
+                    
+                } catch (error) {
+                    console.error('❌ Error guardando mensaje:', error);
+                    this.showMessage('❌ Error enviando mensaje', 'error');
+                } finally {
+                    button.disabled = false;
+                    button.textContent = '✨ Enviar Mensaje';
+                }
+            },
             
-            if (!text) {
-                alert('Por favor, escribe una frase bonita 💕');
-                return;
-            }
+            async addMemory() {
+                if (!this.isConnected) {
+                    this.showMessage('❌ Sin conexión a la base de datos', 'error');
+                    return;
+                }
+                
+                const title = document.getElementById('memoryTitle').value.trim();
+                const author = document.getElementById('memoryAuthor').value;
+                const imageFile = document.getElementById('memoryImage').files[0];
+                const button = document.getElementById('addMemoryBtn');
+                
+                if (!title) {
+                    this.showMessage('Por favor, escribe un título para el recuerdo 💕', 'error');
+                    return;
+                }
+                
+                if (!imageFile) {
+                    this.showMessage('Por favor, selecciona una imagen 📸', 'error');
+                    return;
+                }
+                
+                button.disabled = true;
+                button.textContent = '⏳ Guardando...';
+                
+                try {
+                    let imageUrl = null;
+                    
+                    // Subir imagen
+                    const fileName = `${Date.now()}_${imageFile.name}`;
+                    const { data: uploadData, error: uploadError } = await this.supabase.storage
+                        .from('love-memories')
+                        .upload(fileName, imageFile);
+                    
+                    if (uploadError) throw uploadError;
+                    
+                    // Obtener URL pública
+                    const { data: urlData } = this.supabase.storage
+                        .from('love-memories')
+                        .getPublicUrl(fileName);
+                    
+                    imageUrl = urlData.publicUrl;
+                    
+                    // Guardar en base de datos
+                    const { error } = await this.supabase
+                        .from('love_memories')
+                        .insert([{
+                            author: author,
+                            title: title,
+                            image_url: imageUrl
+                        }]);
+                    
+                    if (error) throw error;
+                    
+                    // Limpiar formulario
+                    document.getElementById('memoryTitle').value = '';
+                    document.getElementById('memoryImage').value = '';
+                    
+                    this.showMessage('📸 Recuerdo guardado con amor', 'success');
+                    
+                } catch (error) {
+                    console.error('❌ Error guardando recuerdo:', error);
+                    this.showMessage('❌ Error guardando recuerdo', 'error');
+                } finally {
+                    button.disabled = false;
+                    button.textContent = '✨ Guardar Recuerdo';
+                }
+            },
             
-            const phrase = {
-                id: Date.now(),
-                author: author,
-                text: text,
-                created_at: new Date().toISOString()
-            };
-            
-            await savePhrase(phrase);
-            phrases.unshift(phrase);
-            
-            document.getElementById('phraseText').value = '';
-            displayPhrases();
-            updateStats();
-            
-            // Mostrar mensaje de éxito
-            showMessage('✨ Frase agregada con amor', 'success');
-        }
-
-        function displayPhrases() {
-            const container = document.getElementById('phrasesList');
-            
-            if (phrases.length === 0) {
-                container.innerHTML = '<div class="empty-state">Aún no hay frases de amor. ¡Sé el primero en escribir una! 💕</div>';
-                return;
-            }
-            
-            container.innerHTML = phrases.map(phrase => `
-                <div class="content-item">
-                    <div class="content-meta">
-                        <span class="content-author">${phrase.author}</span>
-                        <span class="content-time">${formatDate(phrase.created_at)}</span>
+            // ===== MOSTRAR CONTENIDO =====
+            displayMessages() {
+                const container = document.getElementById('messagesList');
+                
+                if (this.messages.length === 0) {
+                    container.innerHTML = '<div class="empty-state">Aún no hay mensajes de amor. ¡Sé el primero en escribir uno! 💕</div>';
+                    return;
+                }
+                
+                container.innerHTML = this.messages.map(message => `
+                    <div class="content-item">
+                        <div class="content-meta">
+                            <span class="content-author">${message.author}</span>
+                            <span class="content-time">${this.formatDate(message.created_at)}</span>
+                        </div>
+                        <div class="content-text">"${message.message}"</div>
                     </div>
-                    <div class="content-text">"${phrase.text}"</div>
-                </div>
-            `).join('');
-        }
-
-        // ===== FUNCIONES DE RECUERDOS =====
-        async function addMemory() {
-            const title = document.getElementById('memoryTitle').value.trim();
-            const author = document.getElementById('memoryAuthor').value;
-            const imageFile = document.getElementById('memoryImage').files[0];
+                `).join('');
+            },
             
-            if (!title) {
-                alert('Por favor, escribe un título para el recuerdo 💕');
-                return;
-            }
-            
-            if (!imageFile) {
-                alert('Por favor, selecciona una imagen 📸');
-                return;
-            }
-            
-            const imageBase64 = await fileToBase64(imageFile);
-            
-            const memory = {
-                id: Date.now(),
-                title: title,
-                author: author,
-                image: imageBase64,
-                created_at: new Date().toISOString()
-            };
-            
-            await saveMemory(memory);
-            memories.unshift(memory);
-            
-            document.getElementById('memoryTitle').value = '';
-            document.getElementById('memoryImage').value = '';
-            displayMemories();
-            updateStats();
-            
-            // Mostrar mensaje de éxito
-            showMessage('📸 Recuerdo guardado con amor', 'success');
-        }
-
-        function displayMemories() {
-            const container = document.getElementById('memoriesGrid');
-            
-            if (memories.length === 0) {
-                container.innerHTML = '<div class="empty-state">Aún no hay recuerdos. ¡Sube tu primera foto! 📸</div>';
-                return;
-            }
-            
-            container.innerHTML = memories.map(memory => `
-                <div class="content-item">
-                    <img src="${memory.image}" class="memory-image" alt="${memory.title}">
-                    <div class="content-meta">
-                        <span class="content-author">${memory.author}</span>
-                        <span class="content-time">${formatDate(memory.created_at)}</span>
+            displayMemories() {
+                const container = document.getElementById('memoriesGrid');
+                
+                if (this.memories.length === 0) {
+                    container.innerHTML = '<div class="empty-state">Aún no hay recuerdos. ¡Sube tu primera foto! 📸</div>';
+                    return;
+                }
+                
+                container.innerHTML = this.memories.map(memory => `
+                    <div class="content-item">
+                        ${memory.image_url ? `<img src="${memory.image_url}" class="memory-image" alt="${memory.title}">` : ''}
+                        <div class="content-meta">
+                            <span class="content-author">${memory.author}</span>
+                            <span class="content-time">${this.formatDate(memory.created_at)}</span>
+                        </div>
+                        <div class="content-text"><strong>${memory.title}</strong></div>
                     </div>
-                    <div class="content-text"><strong>${memory.title}</strong></div>
-                </div>
-            `).join('');
-        }
-
-        // ===== FUNCIONES AUXILIARES =====
-        function fileToBase64(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => resolve(reader.result);
-                reader.onerror = error => reject(error);
-            });
-        }
-
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('es-ES', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            });
-        }
-
-        function showMessage(message, type) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = type;
-            messageDiv.textContent = message;
-            messageDiv.style.position = 'fixed';
-            messageDiv.style.top = '20px';
-            messageDiv.style.right = '20px';
-            messageDiv.style.zIndex = '10000';
-            messageDiv.style.padding = '15px 20px';
-            messageDiv.style.borderRadius = '15px';
-            messageDiv.style.fontWeight = '500';
+                `).join('');
+            },
             
-            document.body.appendChild(messageDiv);
+            // ===== UTILIDADES =====
+            updateConnectionStatus(message, connected) {
+                const statusElement = document.getElementById('connectionStatus');
+                statusElement.textContent = message;
+                statusElement.className = connected ? 'connection-status' : 'connection-status offline';
+            },
             
-            setTimeout(() => {
-                messageDiv.remove();
-            }, 3000);
-        }
+            updateClock() {
+                // Usar hora de Chile
+                const now = this.getChileDate();
+                const timeString = now.toLocaleTimeString('es-CL', {
+                    hour12: false,
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                
+                const dateString = now.toLocaleDateString('es-CL', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                document.getElementById('clock').textContent = timeString;
+                document.getElementById('date').textContent = dateString;
+            },
+            
+            updateStats() {
+                const today = this.getChileDate();
+                const daysTogether = Math.floor((today - this.relationshipStart) / (1000 * 60 * 60 * 24));
+                document.getElementById('daysTogether').textContent = daysTogether;
+                document.getElementById('totalMemories').textContent = this.memories.length;
+                document.getElementById('totalMessages').textContent = this.messages.length;
+                document.getElementById('totalPhrases').textContent = this.dailyPhrases.length;
+            },
+            
+            formatDate(dateString) {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('es-CL', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            },
+            
+            showMessage(message, type) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = type;
+                messageDiv.textContent = message;
+                messageDiv.style.position = 'fixed';
+                messageDiv.style.top = '20px';
+                messageDiv.style.right = '20px';
+                messageDiv.style.zIndex = '10000';
+                messageDiv.style.padding = '15px 20px';
+                messageDiv.style.borderRadius = '15px';
+                messageDiv.style.fontWeight = '500';
+                messageDiv.style.maxWidth = '300px';
+                messageDiv.style.wordWrap = 'break-word';
+                
+                document.body.appendChild(messageDiv);
+                
+                setTimeout(() => {
+                    if (messageDiv.parentNode) {
+                        messageDiv.remove();
+                    }
+                }, 4000);
+            },
+            
+            // ===== EFECTOS VISUALES =====
+            createAnimatedBackground() {
+                const bg = document.getElementById('animatedBg');
+                
+                // Crear formas geométricas flotantes
+                for (let i = 0; i < 6; i++) {
+                    const shape = document.createElement('div');
+                    shape.style.position = 'absolute';
+                    shape.style.width = Math.random() * 80 + 40 + 'px';
+                    shape.style.height = shape.style.width;
+                    shape.style.borderRadius = '50%';
+                    shape.style.background = `linear-gradient(45deg, rgba(255, 107, 157, 0.1), rgba(78, 205, 196, 0.1))`;
+                    shape.style.left = Math.random() * 100 + '%';
+                    shape.style.top = Math.random() * 100 + '%';
+                    shape.style.animation = `float-shape ${Math.random() * 20 + 15}s ease-in-out infinite`;
+                    shape.style.animationDelay = Math.random() * 10 + 's';
+                    bg.appendChild(shape);
+                }
+                
+                // Agregar animación CSS para las formas
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes float-shape {
+                        0%, 100% { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.3; }
+                        25% { transform: translateY(-30px) translateX(20px) scale(1.1); opacity: 0.5; }
+                        50% { transform: translateY(-60px) translateX(-10px) scale(0.9); opacity: 0.4; }
+                        75% { transform: translateY(-30px) translateX(-20px) scale(1.2); opacity: 0.6; }
+                    }
+                `;
+                document.head.appendChild(style);
+            },
+            
+            createFloatingHeart() {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = ['💕', '💖', '💗', '💝', '💘'][Math.floor(Math.random() * 5)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+                heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                
+                document.getElementById('animatedBg').appendChild(heart);
+                
+                setTimeout(() => {
+                    if (heart.parentNode) {
+                        heart.remove();
+                    }
+                }, 15000);
+            },
+            
+            addEntryAnimations() {
+                const cards = document.querySelectorAll('.card');
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('fade-in');
+                    }, index * 200);
+                });
+            },
+            
+            // ===== INSTRUCCIONES DE CONFIGURACIÓN =====
+            showSetupInstructions() {
+                console.log(`
+🚀 CONFIGURACIÓN DE SUPABASE PARA NINI & JOTA CON CALENDARIO
 
-        // ===== FUNCIONES DE ANIMACIÓN =====
-        function createAnimatedBackground() {
-            const bg = document.getElementById('animatedBg');
-            
-            // Crear formas geométricas
-            for (let i = 0; i < 8; i++) {
-                const shape = document.createElement('div');
-                shape.className = 'geometric-shape';
-                shape.style.width = Math.random() * 100 + 50 + 'px';
-                shape.style.height = shape.style.width;
-                shape.style.left = Math.random() * 100 + '%';
-                shape.style.top = Math.random() * 100 + '%';
-                shape.style.animationDelay = Math.random() * 20 + 's';
-                bg.appendChild(shape);
+📋 PASOS PARA CONFIGURAR:
+
+1️⃣ Crear proyecto en Supabase:
+   - Ve a https://supabase.com
+   - Crea un nuevo proyecto
+   - Anota el Project URL y anon key
+
+2️⃣ Configurar credenciales:
+   - En el código JavaScript, reemplaza:
+     SUPABASE_URL = 'https://tu-proyecto.supabase.co'
+     SUPABASE_ANON_KEY = 'tu-anon-key-aqui'
+
+3️⃣ Crear las tablas (ejecuta en SQL Editor):
+
+-- Tabla para mensajes de amor
+CREATE TABLE love_messages (
+    id BIGSERIAL PRIMARY KEY,
+    author TEXT NOT NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Tabla para recuerdos con imágenes
+CREATE TABLE love_memories (
+    id BIGSERIAL PRIMARY KEY,
+    author TEXT NOT NULL,
+    title TEXT NOT NULL,
+    image_url TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Tabla para frases diarias del calendario
+CREATE TABLE daily_phrases (
+    id BIGSERIAL PRIMARY KEY,
+    date DATE NOT NULL UNIQUE,
+    author TEXT NOT NULL,
+    phrase TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+4️⃣ Configurar storage para imágenes:
+
+-- Crear bucket para recuerdos
+INSERT INTO storage.buckets (id, name, public) 
+VALUES ('love-memories', 'love-memories', true);
+
+-- Configurar políticas de seguridad para storage
+CREATE POLICY "Public Access" ON storage.objects FOR SELECT USING (bucket_id = 'love-memories');
+CREATE POLICY "Authenticated users can upload" ON storage.objects FOR INSERT WITH CHECK (bucket_id = 'love-memories');
+
+-- Habilitar Row Level Security
+ALTER TABLE love_messages ENABLE ROW LEVEL SECURITY;
+ALTER TABLE love_memories ENABLE ROW LEVEL SECURITY;
+ALTER TABLE daily_phrases ENABLE ROW LEVEL SECURITY;
+
+-- Políticas para acceso público (opcional, para mayor seguridad configurar autenticación)
+CREATE POLICY "Allow all operations" ON love_messages FOR ALL USING (true);
+CREATE POLICY "Allow all operations" ON love_memories FOR ALL USING (true);
+CREATE POLICY "Allow all operations" ON daily_phrases FOR ALL USING (true);
+
+5️⃣ Activar Real-time:
+   - Ve a Database > Replication
+   - Activa las tablas para real-time
+
+🎉 ¡Listo! Tu aplicación de amor estará funcionando.
+
+💡 CARACTERÍSTICAS:
+   ✨ Calendario interactivo con turnos alternados
+   💌 Mensajes de amor en tiempo real
+   📸 Galería de recuerdos con imágenes
+   📅 Frases del día por turnos (Nini/Jota)
+   🔄 Sincronización automática
+   💕 Animaciones románticas
+   📱 Responsive design
+   🇨🇱 Configurado para zona horaria de Chile
+
+🔧 PERSONALIZACIÓN:
+   - Cambia la fecha de inicio en: relationshipStart: new Date('2024-10-20')
+   - Los turnos alternan cada día empezando con Nini
+   - Colores y efectos se pueden personalizar en CSS
+
+📱 USO:
+   - Cada día corresponde un turno (Nini o Jota)
+   - Click en días del calendario para agregar frases
+   - Solo se pueden agregar frases el día actual
+   - Los recuerdos y mensajes se pueden agregar siempre
+
+🛠️ ARREGLOS REALIZADOS:
+   ✅ Zona horaria configurada para Chile (Calama)
+   ✅ Permite agregar frases en el día actual
+   ✅ Validación correcta de fechas
+   ✅ Formato de fechas chileno (es-CL)
+
+¡Disfruten su aplicación de amor! 💕
+                `);
             }
-        }
+        };
 
-        function createFloatingHeart() {
-            const heart = document.createElement('div');
-            heart.className = 'floating-heart';
-            heart.innerHTML = ['💕', '💖', '💗', '💝', '💘'][Math.floor(Math.random() * 5)];
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.fontSize = Math.random() * 20 + 15 + 'px';
-            heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            
-            document.getElementById('animatedBg').appendChild(heart);
-            
-            setTimeout(() => {
-                heart.remove();
-            }, 15000);
-        }
+        // ===== INICIALIZAR AL CARGAR LA PÁGINA =====
+        document.addEventListener('DOMContentLoaded', () => {
+            LoveApp.init();
+        });
 
-        // ===== EVENT LISTENERS ADICIONALES =====
-        document.getElementById('phraseText').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                addPhrase();
+        // ===== CERRAR MODAL CON ESC =====
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                LoveApp.closePhraseModal();
             }
         });
 
-        document.getElementById('memoryTitle').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                addMemory();
+        // ===== CERRAR MODAL CLICKEANDO FUERA =====
+        document.getElementById('phraseModal').addEventListener('click', (e) => {
+            if (e.target.id === 'phraseModal') {
+                LoveApp.closePhraseModal();
             }
         });
-
-        // Inicializar la base de datos al cargar
-        initializeDatabase();
     </script>
 </body>
 </html>
