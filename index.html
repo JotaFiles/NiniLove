@@ -25,6 +25,7 @@
             --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             --gradient-4: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            --gradient-5: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
             --shadow-light: 0 4px 20px rgba(255, 107, 157, 0.15);
             --shadow-medium: 0 8px 30px rgba(255, 107, 157, 0.2);
             --shadow-heavy: 0 15px 40px rgba(255, 107, 157, 0.3);
@@ -125,6 +126,217 @@
         .card:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-medium);
+        }
+
+        /* ===== ESTILOS PARA RETOS DIARIOS ===== */
+        .challenge-container {
+            background: var(--gradient-5);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .challenge-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: sparkle 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes sparkle {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(20px) translateY(20px); }
+        }
+
+        .challenge-header {
+            position: relative;
+            z-index: 2;
+        }
+
+        .challenge-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .challenge-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--dark-text);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .challenge-text {
+            font-size: 1.1rem;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+            font-style: italic;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .challenge-date {
+            font-size: 0.9rem;
+            color: var(--medium-text);
+            background: rgba(255, 255, 255, 0.7);
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .upload-section {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .file-upload-challenge {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .file-upload-challenge input[type="file"] {
+            display: none;
+        }
+
+        .file-upload-challenge-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 15px;
+            background: var(--gradient-3);
+            color: white;
+            text-align: center;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: var(--shadow-light);
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+        }
+
+        .file-upload-challenge-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .upload-preview {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .upload-preview img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .challenge-photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .challenge-photo-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .challenge-photo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .challenge-photo-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .challenge-photo-info {
+            padding: 15px;
+        }
+
+        .challenge-photo-challenge {
+            font-size: 0.9rem;
+            color: var(--primary-pink);
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .challenge-photo-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .challenge-photo-author {
+            font-weight: 600;
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+        }
+
+        .challenge-photo-date {
+            font-size: 0.8rem;
+            color: var(--medium-text);
+            background: rgba(255, 107, 157, 0.1);
+            padding: 4px 8px;
+            border-radius: 8px;
+        }
+
+        /* Filtros para la galería */
+        .gallery-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            background: rgba(255, 107, 157, 0.1);
+            color: var(--primary-pink);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--gradient-2);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-light);
         }
 
         .clock-section {
@@ -649,6 +861,37 @@
                 font-size: 1.5rem;
                 margin-bottom: 15px;
             }
+
+            /* Retos diarios en móvil */
+            .challenge-container {
+                padding: 20px 15px;
+            }
+            
+            .challenge-icon {
+                font-size: 2.5rem;
+            }
+            
+            .challenge-title {
+                font-size: 1.5rem;
+            }
+            
+            .challenge-text {
+                font-size: 1rem;
+            }
+            
+            .challenge-photo-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 15px;
+            }
+            
+            .gallery-filters {
+                gap: 8px;
+            }
+            
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
             
             /* Optimizaciones específicas del calendario para móvil */
             .calendar-container {
@@ -797,6 +1040,11 @@
                 font-size: 0.7rem;
             }
             
+            .challenge-photo-gallery {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
             .calendar-container {
                 padding: 10px;
                 margin: 0 -2px;
@@ -850,6 +1098,130 @@
         .fade-in {
             animation: fadeInUp 0.6s ease forwards;
         }
+        .image-modal {
+    display: none;
+    position: fixed;
+    z-index: 20000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.image-modal.show {
+    display: flex;
+}
+
+.image-modal-content {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 15px;
+    box-shadow: var(--shadow-heavy);
+    object-fit: contain;
+}
+
+.image-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+.image-modal-actions {
+    margin-top: 15px;
+    text-align: center;
+}
+.image-modal-actions a {
+    background: var(--gradient-2);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: var(--shadow-light);
+}
+.image-modal-actions a:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+}
+/* Overlay oscuro */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Caja blanca del modal */
+.overlay-modal {
+  position: relative;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Imagen grande */
+.overlay-img {
+  max-width: 85vw;
+  max-height: 70vh;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Botón de descarga */
+.download-link {
+  color: #ffffff;
+  background: #ff6b9d;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s ease;
+}
+
+.download-link:hover {
+  background: #e85c89;
+}
+
+/* Botón de Cerrar (X) */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff6b9d;
+  border: none;
+  color: white;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  line-height: 30px;
+  text-align: center;
+}
+
+.close-btn:hover {
+  background: #e85c89;
+}
 
         /* ===== MEJORAS ADICIONALES PARA TOUCH ===== */
         @media (pointer: coarse) {
@@ -866,10 +1238,21 @@
                 min-height: 44px;
                 padding: 12px 20px;
             }
+            /* ===== MODAL DE IMÁGENES PARA RETOS ===== */
+
+
+
         }
     </style>
 </head>
 <body>
+    <div id="overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:9999;">
+  <div style="text-align:center">
+    <img id="overlay-image" src="" style="max-width:90vw; max-height:80vh; border-radius:10px;">
+    <a id="download-btn" href="" download style="display:block; margin-top:15px; color:white; font-size:18px;">Descargar imagen</a>
+  </div>
+</div>
+
     <div class="animated-bg" id="animatedBg"></div>
     
     <div class="container">
@@ -910,7 +1293,62 @@
                         <span class="stat-number" id="totalPhrases">0</span>
                         <span class="stat-label">Frases del día</span>
                     </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalChallenges">0</span>
+                        <span class="stat-label">Retos completados</span>
+                    </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- NUEVA SECCIÓN: RETO DIARIO CON FOTOS -->
+        <div class="card fade-in">
+            <h2 class="section-title">🎯 Reto Diario con Fotos</h2>
+            
+            <div class="challenge-container" id="challengeContainer">
+                <div class="challenge-header">
+                    <span class="challenge-icon" id="challengeIcon">📸</span>
+                    <h3 class="challenge-title">Reto del Día</h3>
+                    <div class="challenge-date" id="challengeDate">Cargando fecha...</div>
+                    <div class="challenge-text" id="challengeText">Cargando reto del día...</div>
+                </div>
+                
+                <div class="upload-section">
+                    <div class="form-group">
+                        <select class="form-select" id="challengeAuthor">
+                            <option value="Nini">💖 Nini</option>
+                            <option value="Jota">💙 Jota</option>
+                        </select>
+                    </div>
+                    
+                    <div class="file-upload-challenge">
+                        <input type="file" id="challengePhoto" accept="image/*">
+                        <label for="challengePhoto" class="file-upload-challenge-btn">
+                            <span>📸</span>
+                            <span>Subir foto para el reto</span>
+                        </label>
+                    </div>
+                    
+                    <div class="upload-preview" id="uploadPreview"></div>
+                    
+                    <button class="btn" onclick="LoveApp.uploadChallengePhoto()" id="uploadChallengeBtn">
+                        ✨ Completar Reto
+                    </button>
+                </div>
+            </div>
+
+            
+            <!-- Filtros para la galería -->
+            <div class="gallery-filters">
+                <button class="filter-btn active" onclick="LoveApp.filterChallengePhotos('all')">Todos</button>
+                <button class="filter-btn" onclick="LoveApp.filterChallengePhotos('Nini')">💖 Nini</button>
+                <button class="filter-btn" onclick="LoveApp.filterChallengePhotos('Jota')">💙 Jota</button>
+                <button class="filter-btn" onclick="LoveApp.filterChallengePhotos('recent')">Recientes</button>
+            </div>
+            
+            <!-- Galería de fotos de retos -->
+            <div class="challenge-photo-gallery" id="challengePhotoGallery">
+                <div class="loading">Cargando fotos de retos... 📸</div>
             </div>
         </div>
 
@@ -1031,6 +1469,9 @@
                     Cerrar
                 </button>
             </div>
+            <!-- Modal para fotos de retos -->
+
+
         </div>
     </div>
 
@@ -1048,6 +1489,7 @@
             messages: [],
             memories: [],
             dailyPhrases: [],
+            challengePhotos: [],
             
             // Fecha de inicio de la relación
             relationshipStart: new Date('2024-10-20'),
@@ -1055,6 +1497,72 @@
             // Estado del calendario
             currentDate: new Date(),
             selectedDate: null,
+            
+            // Estado del filtro de retos
+            currentFilter: 'all',
+            
+            // Base de datos de retos diarios (30+ retos únicos)
+           dailyChallenges: [
+    { icon: '🧦', text: 'Tómate una foto con tus calcetines más divertidos' },
+    { icon: '🕶️', text: 'Foto usando tus gafas (de sol o normales)' },
+    { icon: '🪞', text: 'Selfie frente al espejo con una pose divertida' },
+    { icon: '🧢', text: 'Foto usando una gorra o sombrero que tengas' },
+    { icon: '🧥', text: 'Foto con tu chaqueta o suéter favorito' },
+    { icon: '👟', text: 'Tómate una foto mostrando tus zapatos o zapatillas' },
+    { icon: '🛏️', text: 'Foto abrazando tu almohada o manta favorita' },
+    { icon: '📚', text: 'Selfie con un libro que tengas a la mano' },
+    { icon: '☕', text: 'Foto sosteniendo tu taza o vaso favorito' },
+    { icon: '🍫', text: 'Selfie mientras comes un snack que tengas en casa' },
+    { icon: '🎧', text: 'Foto escuchando música con tus auriculares' },
+    { icon: '💄', text: 'Foto usando algún accesorio de maquillaje o joya' },
+    { icon: '📱', text: 'Selfie mostrando tu teléfono o lo que estés viendo en él' },
+    { icon: '🖊️', text: 'Foto con algo que estés escribiendo o dibujando' },
+    { icon: '🧴', text: 'Foto usando crema, perfume o algo de tu tocador' },
+    { icon: '🪥', text: 'Selfie con tu cepillo de dientes o en tu rutina mañanera' },
+    { icon: '🛋️', text: 'Foto en tu lugar favorito de casa' },
+    { icon: '🎽', text: 'Selfie usando ropa deportiva aunque sea solo para la foto' },
+    { icon: '🧦🧤', text: 'Foto combinando accesorios como guantes, bufandas o calcetines' },
+    { icon: '🧃', text: 'Selfie con tu bebida del día' },
+    { icon: '🛒', text: 'Foto con algo que compraste recientemente' },
+    { icon: '🪑', text: 'Foto sentado en tu silla favorita' },
+    { icon: '🖼️', text: 'Selfie con algo que tengas colgado en la pared' },
+    { icon: '🎨', text: 'Foto mostrando algo que hayas dibujado o pintado' },
+    { icon: '🧸', text: 'Foto abrazando un peluche o muñeco que tengas' },
+    { icon: '🧂', text: 'Selfie con tu snack o condimento favorito' },
+    { icon: '🖼️', text: 'Foto con un cuadro o decoración de tu casa' },
+    { icon: '🧵', text: 'Foto con algo que estés cosiendo o arreglando' },
+    { icon: '🛏️', text: 'Selfie desde tu cama o tu lugar de descanso' },
+    { icon: '🧽', text: 'Foto con algo que estés limpiando o usando para limpiar' },
+    { icon: '🕰️', text: 'Selfie con un reloj o algo que indique la hora' },
+    { icon: '🪟', text: 'Foto mirando por una ventana' },
+    { icon: '🖥️', text: 'Selfie frente a tu computadora o laptop' },
+    { icon: '📦', text: 'Foto con una caja o paquete que tengas en casa' },
+    { icon: '🧶', text: 'Foto con hilo, lana o algo que uses para manualidades' },
+    { icon: '🛍️', text: 'Selfie con una bolsa de compras o un paquete' },
+    { icon: '🧹', text: 'Foto haciendo algo de limpieza o con una escoba' },
+    { icon: '🛁', text: 'Selfie con tus productos de baño favoritos' },
+    { icon: '🛏️', text: 'Foto saltando en tu cama o haciendo una pose divertida' },
+    { icon: '🎧', text: 'Foto escuchando música y bailando un poco' },
+    { icon: '🧽', text: 'Foto con algo que estés limpiando o lavando' },
+    { icon: '🧴', text: 'Selfie aplicando crema o loción' },
+    { icon: '🖼️', text: 'Foto con tu decoración favorita de casa' },
+    { icon: '🧦', text: 'Selfie mostrando calcetines combinados o diferentes' },
+    { icon: '🪑', text: 'Foto sentado de manera divertida en tu silla' },
+    { icon: '📚', text: 'Selfie mientras hojeas un libro o revista' },
+    { icon: '🛋️', text: 'Foto recostado o sentado en tu sofá favorito' },
+    { icon: '🧢', text: 'Selfie con tu gorra puesta de forma graciosa' },
+    { icon: '🎽', text: 'Foto con tu ropa más cómoda de casa' },
+    { icon: '🧸', text: 'Selfie abrazando algo blando o cómodo' },
+    { icon: '🍽️', text: 'Foto comiendo tu snack o comida favorita' },
+    { icon: '🛒', text: 'Selfie con algo que compraste hoy' },
+    { icon: '🖊️', text: 'Foto escribiendo una nota o garabateando algo divertido' },
+    { icon: '🖼️', text: 'Selfie con un cuadro o poster que te guste' },
+    { icon: '🪞', text: 'Foto jugando con reflejos en el espejo' },
+    { icon: '🎨', text: 'Selfie mientras haces un garabato o dibujo rápido' },
+    { icon: '🧦🧤', text: 'Foto con tus accesorios más coloridos' }
+],
+
+            
             
             // ===== FUNCIONES DE FECHA CON ZONA HORARIA DE CHILE =====
             getChileDate() {
@@ -1077,6 +1585,28 @@
                 return this.formatDateChile(date1) === this.formatDateChile(date2);
             },
             
+            // ===== FUNCIONES DE RETOS DIARIOS =====
+            getTodayChallenge() {
+                const today = this.getChileDate();
+                const daysSinceStart = Math.floor((today - this.relationshipStart) / (1000 * 60 * 60 * 24));
+                const challengeIndex = daysSinceStart % this.dailyChallenges.length;
+                return this.dailyChallenges[challengeIndex];
+            },
+            
+            updateChallengeDisplay() {
+                const today = this.getChileDate();
+                const challenge = this.getTodayChallenge();
+                
+                document.getElementById('challengeIcon').textContent = challenge.icon;
+                document.getElementById('challengeText').textContent = challenge.text;
+                document.getElementById('challengeDate').textContent = today.toLocaleDateString('es-CL', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            },
+            
             // ===== INICIALIZACIÓN =====
             async init() {
                 console.log('🚀 Iniciando aplicación de amor...');
@@ -1092,8 +1622,14 @@
                 this.updateClock();
                 setInterval(() => this.updateClock(), 1000);
                 
+                // Actualizar reto del día
+                this.updateChallengeDisplay();
+                
                 // Inicializar efectos
                 setInterval(() => this.createFloatingHeart(), 5000);
+                
+                // Configurar preview de imagen
+                this.setupImagePreview();
                 
                 // Intentar conectar a Supabase
                 await this.initializeSupabase();
@@ -1105,6 +1641,27 @@
                 this.addEntryAnimations();
                 
                 console.log('✅ Aplicación inicializada');
+            },
+            
+            setupImagePreview() {
+                const challengeInput = document.getElementById('challengePhoto');
+                const previewContainer = document.getElementById('uploadPreview');
+                
+                challengeInput.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            previewContainer.innerHTML = `
+                                <img src="${e.target.result}" alt="Preview" style="max-width: 200px; max-height: 200px; border-radius: 12px; box-shadow: var(--shadow-light);">
+                                <p style="margin-top: 10px; color: var(--medium-text); font-size: 0.9rem;">¡Foto lista para subir! 📸</p>
+                            `;
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        previewContainer.innerHTML = '';
+                    }
+                });
             },
             
             // ===== CONFIGURACIÓN DE SUPABASE =====
@@ -1191,6 +1748,18 @@
                     )
                     .subscribe();
 
+                // Suscribirse a fotos de retos
+                this.supabase
+                    .channel('fotos_retos_channel')
+                    .on('postgres_changes', 
+                        { event: '*', schema: 'public', table: 'fotos_retos' }, 
+                        (payload) => {
+                            console.log('🔄 Cambio en fotos de retos:', payload);
+                            this.loadChallengePhotos();
+                        }
+                    )
+                    .subscribe();
+
                 console.log('🔴 Suscripciones en tiempo real configuradas');
             },
             
@@ -1199,10 +1768,172 @@
                 await Promise.all([
                     this.loadMessages(),
                     this.loadMemories(),
-                    this.loadDailyPhrases()
+                    this.loadDailyPhrases(),
+                    this.loadChallengePhotos()
                 ]);
                 this.updateStats();
                 this.renderCalendar();
+            },
+            
+            async loadChallengePhotos() {
+                const container = document.getElementById('challengePhotoGallery');
+                
+                if (!this.isConnected) {
+                    container.innerHTML = '<div class="error">Sin conexión a la base de datos</div>';
+                    return;
+                }
+                
+                container.innerHTML = '<div class="loading">Cargando fotos de retos... 📸</div>';
+                
+                try {
+                    const { data, error } = await this.supabase
+                        .from('fotos_retos')
+                        .select('*')
+                        .order('created_at', { ascending: false });
+                    
+                    if (error) throw error;
+                    
+                    this.challengePhotos = data || [];
+                    this.displayChallengePhotos();
+                    
+                    console.log('✅ Fotos de retos cargadas:', this.challengePhotos.length);
+                    
+                } catch (error) {
+                    console.error('❌ Error cargando fotos de retos:', error);
+                    container.innerHTML = '<div class="error">Error cargando fotos de retos</div>';
+                }
+            },
+
+            async uploadChallengePhoto() {
+                if (!this.isConnected) {
+                    this.showMessage('❌ Sin conexión a la base de datos', 'error');
+                    return;
+                }
+                
+                const photoFile = document.getElementById('challengePhoto').files[0];
+                const author = document.getElementById('challengeAuthor').value;
+                const button = document.getElementById('uploadChallengeBtn');
+                
+                if (!photoFile) {
+                    this.showMessage('Por favor, selecciona una foto para el reto 📸', 'error');
+                    return;
+                }
+                
+                button.disabled = true;
+                button.textContent = '⏳ Subiendo...';
+                
+                try {
+                    const today = this.getChileDate();
+                    const challenge = this.getTodayChallenge();
+                    
+                    // Subir imagen a Supabase Storage
+                    const fileName = `${Date.now()}_${author}_${photoFile.name}`;
+                    const { data: uploadData, error: uploadError } = await this.supabase.storage
+                        .from('retos-fotos')
+                        .upload(fileName, photoFile);
+                    
+                    if (uploadError) throw uploadError;
+                    
+                    // Obtener URL pública
+                    const { data: urlData } = this.supabase.storage
+                        .from('retos-fotos').getPublicUrl(fileName);
+                    
+                    // Guardar en base de datos
+                    const { data, error } = await this.supabase
+                        .from('fotos_retos')
+                        .insert([{
+                            author: author,
+                            image_url: urlData.publicUrl,
+                            challenge_text: challenge.text,
+                            challenge_icon: challenge.icon,
+                            challenge_date: this.formatDateChile(today)
+                        }]);
+                    
+                    if (error) throw error;
+                    
+                    // Limpiar formulario
+                    document.getElementById('challengePhoto').value = '';
+                    document.getElementById('uploadPreview').innerHTML = '';
+                    
+                    this.showMessage('🎯 ¡Reto completado exitosamente!', 'success');
+                    
+                } catch (error) {
+                    console.error('❌ Error subiendo foto del reto:', error);
+                    this.showMessage('❌ Error subiendo la foto', 'error');
+                } finally {
+                    button.disabled = false;
+                    button.textContent = '✨ Completar Reto';
+                }
+            },
+            
+             openImageModal: function(urlImagen) {
+    // Aquí abrimos el overlay
+    const overlay = document.getElementById('overlay');
+    const overlayImg = document.getElementById('overlay-image');
+    const downloadBtn = document.getElementById('download-btn');
+    overlayImg.src = urlImagen;
+    downloadBtn.href = urlImagen;
+    overlay.style.display = 'flex';
+},
+closeImageModal: function() {
+    document.getElementById('overlay').style.display = 'none';
+},   
+
+
+            displayChallengePhotos() {
+                const container = document.getElementById('challengePhotoGallery');
+                
+                if (this.challengePhotos.length === 0) {
+                    container.innerHTML = '<div class="empty-state">No hay fotos de retos aún. ¡Completa el reto de hoy! 📸</div>';
+                    return;
+                }
+                
+                // Filtrar fotos según el filtro activo
+                let filteredPhotos = this.challengePhotos;
+                
+                if (this.currentFilter === 'Nini' || this.currentFilter === 'Jota') {
+                    filteredPhotos = this.challengePhotos.filter(photo => photo.author === this.currentFilter);
+                } else if (this.currentFilter === 'recent') {
+                    const lastWeek = new Date();
+                    lastWeek.setDate(lastWeek.getDate() - 7);
+                    filteredPhotos = this.challengePhotos.filter(photo => 
+                        new Date(photo.created_at) > lastWeek
+                    );
+                }
+                
+                const html = filteredPhotos.map((photo, index) => `
+                    <div class="challenge-photo-item" style="animation-delay: ${index * 0.1}s">
+                        <img src="${photo.image_url}" 
+     alt="Reto completado" 
+     style="cursor:pointer;" 
+     onclick="LoveApp.openImageModal('${photo.image_url}')"
+     onerror="this.src='data:image/svg+xml;base64,...'" 
+     loading="lazy">
+
+                        <div class="challenge-photo-info">
+                            <div class="challenge-photo-challenge">
+                                ${photo.challenge_icon} ${photo.challenge_text}
+                            </div>
+                            <div class="challenge-photo-meta">
+                                <span class="challenge-photo-author">${photo.author}</span>
+                                <span class="challenge-photo-date">
+                                    ${new Date(photo.created_at).toLocaleDateString('es-CL')}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                container.innerHTML = html;
+            },
+
+            filterChallengePhotos(filter) {
+                // Actualizar botones activos
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelector(`[onclick="LoveApp.filterChallengePhotos('${filter}')"]`).classList.add('active');
+                
+                this.currentFilter = filter;
+                this.displayChallengePhotos();
             },
             
             async loadMessages() {
@@ -1219,13 +1950,29 @@
                     const { data, error } = await this.supabase
                         .from('love_messages')
                         .select('*')
-                        .order('created_at', { ascending: false });
+                        .order('created_at', { ascending: false })
+                        .limit(20);
                     
                     if (error) throw error;
                     
                     this.messages = data || [];
-                    this.displayMessages();
                     
+                    if (this.messages.length === 0) {
+                        container.innerHTML = '<div class="empty-state">Aún no hay mensajes. ¡Escribe el primero! 💕</div>';
+                        return;
+                    }
+                    
+                    const html = this.messages.map((message, index) => `
+                        <div class="content-item" style="animation-delay: ${index * 0.1}s">
+                            <div class="content-meta">
+                                <span class="content-author">${message.author}</span>
+                                <span class="content-time">${this.formatTimeAgo(message.created_at)}</span>
+                            </div>
+                            <div class="content-text">${message.message}</div>
+                        </div>
+                    `).join('');
+                    
+                    container.innerHTML = html;
                     console.log('✅ Mensajes cargados:', this.messages.length);
                     
                 } catch (error) {
@@ -1248,13 +1995,30 @@
                     const { data, error } = await this.supabase
                         .from('love_memories')
                         .select('*')
-                        .order('created_at', { ascending: false });
+                        .order('created_at', { ascending: false })
+                        .limit(20);
                     
                     if (error) throw error;
                     
                     this.memories = data || [];
-                    this.displayMemories();
                     
+                    if (this.memories.length === 0) {
+                        container.innerHTML = '<div class="empty-state">Aún no hay recuerdos. ¡Sube el primero! 📸</div>';
+                        return;
+                    }
+                    
+                    const html = this.memories.map((memory, index) => `
+                        <div class="content-item" style="animation-delay: ${index * 0.1}s">
+                            ${memory.image_url ? `<img src="${memory.image_url}" alt="${memory.title}" class="memory-image" loading="lazy" onerror="this.style.display='none'">` : ''}
+                            <div class="content-meta">
+                                <span class="content-author">${memory.author}</span>
+                                <span class="content-time">${this.formatTimeAgo(memory.created_at)}</span>
+                            </div>
+                            <div class="content-text"><strong>${memory.title}</strong></div>
+                        </div>
+                    `).join('');
+                    
+                    container.innerHTML = html;
                     console.log('✅ Recuerdos cargados:', this.memories.length);
                     
                 } catch (error) {
@@ -1270,11 +2034,13 @@
                     const { data, error } = await this.supabase
                         .from('daily_phrases')
                         .select('*')
-                        .order('date', { ascending: false });
+                        .order('phrase_date', { ascending: false });
                     
                     if (error) throw error;
                     
                     this.dailyPhrases = data || [];
+                    this.renderCalendar(); // Re-renderizar calendario con las frases
+                    
                     console.log('✅ Frases diarias cargadas:', this.dailyPhrases.length);
                     
                 } catch (error) {
@@ -1282,288 +2048,19 @@
                 }
             },
             
-            // ===== FUNCIONES DEL CALENDARIO =====
-            renderCalendar() {
-                const grid = document.getElementById('calendarGrid');
-                if (!grid) return;
-                
-                // Limpiar grid manteniendo headers
-                const headers = grid.querySelectorAll('.calendar-day-header');
-                grid.innerHTML = '';
-                headers.forEach(header => grid.appendChild(header));
-                
-                const year = this.currentDate.getFullYear();
-                const month = this.currentDate.getMonth();
-                
-                // Actualizar título del mes
-                const monthNames = [
-                    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-                    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
-                ];
-                document.getElementById('calendarMonthYear').textContent = `${monthNames[month]} ${year}`;
-                
-                // Actualizar info de turno para hoy
-                this.updateTurnInfo();
-                
-                // Primer día del mes y cuántos días tiene
-                const firstDay = new Date(year, month, 1);
-                const lastDay = new Date(year, month + 1, 0);
-                const daysInMonth = lastDay.getDate();
-                const startingDayOfWeek = firstDay.getDay();
-                
-                // Días del mes anterior
-                const prevMonth = new Date(year, month - 1);
-                const daysInPrevMonth = new Date(year, month, 0).getDate();
-                
-                for (let i = startingDayOfWeek - 1; i >= 0; i--) {
-                    const day = daysInPrevMonth - i;
-                    const dayElement = this.createDayElement(day, true, new Date(prevMonth.getFullYear(), prevMonth.getMonth(), day));
-                    grid.appendChild(dayElement);
-                }
-                
-                // Días del mes actual
-                for (let day = 1; day <= daysInMonth; day++) {
-                    const date = new Date(year, month, day);
-                    const dayElement = this.createDayElement(day, false, date);
-                    grid.appendChild(dayElement);
-                }
-                
-                // Días del mes siguiente para completar la grid
-                const totalCells = grid.children.length - 7; // Restar headers
-                const remainingCells = 42 - totalCells; // 6 filas × 7 días
-                
-                for (let day = 1; day <= remainingCells; day++) {
-                    const nextMonth = new Date(year, month + 1);
-                    const dayElement = this.createDayElement(day, true, new Date(nextMonth.getFullYear(), nextMonth.getMonth(), day));
-                    grid.appendChild(dayElement);
-                }
-            },
-            
-            createDayElement(day, isOtherMonth, date) {
-                const dayElement = document.createElement('div');
-                dayElement.className = 'calendar-day';
-                dayElement.textContent = day;
-                dayElement.dataset.date = this.formatDateChile(date);
-                
-                if (isOtherMonth) {
-                    dayElement.classList.add('other-month');
-                }
-                
-                // Marcar día de hoy usando fecha de Chile
-                const today = this.getChileDate();
-                if (this.isSameDay(date, today)) {
-                    dayElement.classList.add('today');
-                }
-                
-                // Verificar si tiene frase
-                const dateString = this.formatDateChile(date);
-                const hasPhrase = this.dailyPhrases.some(phrase => phrase.date === dateString);
-                if (hasPhrase) {
-                    dayElement.classList.add('has-phrase');
-                }
-                
-                // Determinar de quién es el turno
-                const turn = this.getTurnForDate(date);
-                if (turn === 'Nini') {
-                    dayElement.classList.add('nini-turn');
-                } else if (turn === 'Jota') {
-                    dayElement.classList.add('jota-turn');
-                }
-                
-                // Agregar evento click
-                dayElement.addEventListener('click', () => {
-                    if (!isOtherMonth) {
-                        this.openPhraseModal(date);
-                    }
-                });
-                
-                return dayElement;
-            },
-            
-            getTurnForDate(date) {
-                // Calcular días desde el inicio de la relación usando zona horaria de Chile
-                const daysSinceStart = Math.floor((date - this.relationshipStart) / (1000 * 60 * 60 * 24));
-                
-                // Alternar turnos cada día (empezando con Nini)
-                return daysSinceStart % 2 === 0 ? 'Nini' : 'Jota';
-            },
-            
-            updateTurnInfo() {
-                const today = this.getChileDate();
-                const todayTurn = this.getTurnForDate(today);
-                const turnInfo = document.getElementById('calendarTurnInfo');
-                
-                if (turnInfo) {
-                    const emoji = todayTurn === 'Nini' ? '💖' : '💙';
-                    turnInfo.innerHTML = `🌟 Hoy le toca a: ${emoji} ${todayTurn}`;
-                }
-            },
-            
-            changeMonth(direction) {
-                this.currentDate.setMonth(this.currentDate.getMonth() + direction);
-                this.renderCalendar();
-            },
-            
-            // ===== MODAL DE FRASES DIARIAS =====
-            openPhraseModal(date) {
-                this.selectedDate = date;
-                const dateString = this.formatDateChile(date);
-                const turn = this.getTurnForDate(date);
-                
-                // Actualizar contenido del modal
-                document.getElementById('phraseModalTitle').textContent = 'Frase del Día';
-                document.getElementById('phraseModalDate').textContent = date.toLocaleDateString('es-CL', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                });
-                
-                const emoji = turn === 'Nini' ? '💖' : '💙';
-                document.getElementById('phraseModalTurn').innerHTML = `Es el turno de: ${emoji} ${turn}`;
-                
-                // Verificar si ya existe una frase
-                const existingPhrase = this.dailyPhrases.find(phrase => phrase.date === dateString);
-                
-                if (existingPhrase) {
-                    // Mostrar frase existente
-                    this.showExistingPhrase(existingPhrase);
-                } else {
-                    // Mostrar formulario para nueva frase
-                    this.showPhraseForm(turn, date);
-                }
-                
-                // Mostrar modal
-                document.getElementById('phraseModal').classList.add('show');
-            },
-            
-            showExistingPhrase(phrase) {
-                document.getElementById('phraseForm').style.display = 'none';
-                document.getElementById('savePhraseBtn').style.display = 'none';
-                
-                const display = document.getElementById('phraseDisplay');
-                display.innerHTML = `
-                    <div class="phrase-display">
-                        <div class="phrase-text">"${phrase.phrase}"</div>
-                        <div class="phrase-author">— ${phrase.author}</div>
-                    </div>
-                `;
-                display.style.display = 'block';
-            },
-            
-            showPhraseForm(turn, selectedDate) {
-                const today = this.getChileDate();
-                const isToday = this.isSameDay(selectedDate, today);
-                const isPast = selectedDate < today && !this.isSameDay(selectedDate, today);
-                const isFuture = selectedDate > today && !this.isSameDay(selectedDate, today);
-                
-                console.log('📅 Verificando fecha:', {
-                    selectedDate: this.formatDateChile(selectedDate),
-                    today: this.formatDateChile(today),
-                    isToday,
-                    isPast,
-                    isFuture
-                });
-                
-                document.getElementById('phraseDisplay').style.display = 'none';
-                
-                if (isPast) {
-                    // No permitir agregar frases a días pasados
-                    document.getElementById('phraseForm').innerHTML = `
-                        <div class="error">
-                            No se pueden agregar frases a días pasados.
-                        </div>
-                    `;
-                    document.getElementById('savePhraseBtn').style.display = 'none';
-                } else if (isToday) {
-                    // Permitir agregar la frase del día actual
-                    document.getElementById('phraseForm').style.display = 'block';
-                    document.getElementById('savePhraseBtn').style.display = 'block';
-                    document.getElementById('phraseText').value = '';
-                    
-                    // Mensaje informativo sobre el turno
-                    const phraseForm = document.getElementById('phraseForm');
-                    const infoDiv = phraseForm.querySelector('.turn-info');
-                    if (infoDiv) infoDiv.remove();
-                    
-                    const turnInfoDiv = document.createElement('div');
-                    turnInfoDiv.className = 'turn-info';
-                    turnInfoDiv.style.cssText = 'background: rgba(255, 107, 157, 0.1); padding: 10px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-size: 0.9rem; color: var(--dark-text);';
-                    turnInfoDiv.innerHTML = `✨ Hoy es tu turno, ${turn}! Escribe una frase bonita para este día.`;
-                    
-                    phraseForm.insertBefore(turnInfoDiv, phraseForm.firstChild);
-                } else if (isFuture) {
-                    // Día futuro
-                    document.getElementById('phraseForm').innerHTML = `
-                        <div style="background: rgba(78, 205, 196, 0.1); padding: 15px; border-radius: 12px; text-align: center; color: var(--dark-text);">
-                            🔮 Este día aún no ha llegado.<br>
-                            Cuando sea ${selectedDate.toLocaleDateString('es-CL')}, ${turn} podrá escribir la frase del día.
-                        </div>
-                    `;
-                    document.getElementById('savePhraseBtn').style.display = 'none';
-                }
-            },
-            
-            async saveDailyPhrase() {
-                if (!this.isConnected) {
-                    this.showMessage('❌ Sin conexión a la base de datos', 'error');
-                    return;
-                }
-                
-                const phraseText = document.getElementById('phraseText').value.trim();
-                const turn = this.getTurnForDate(this.selectedDate);
-                const dateString = this.formatDateChile(this.selectedDate);
-                const button = document.getElementById('savePhraseBtn');
-                
-                if (!phraseText) {
-                    this.showMessage('Por favor, escribe una frase bonita 💕', 'error');
-                    return;
-                }
-                
-                button.disabled = true;
-                button.textContent = '⏳ Guardando...';
-                
-                try {
-                    const { error } = await this.supabase
-                        .from('daily_phrases')
-                        .insert([{
-                            date: dateString,
-                            author: turn,
-                            phrase: phraseText
-                        }]);
-                    
-                    if (error) throw error;
-                    
-                    this.showMessage('✨ Frase guardada con amor', 'success');
-                    this.closePhraseModal();
-                    
-                } catch (error) {
-                    console.error('❌ Error guardando frase:', error);
-                    this.showMessage('❌ Error guardando frase', 'error');
-                } finally {
-                    button.disabled = false;
-                    button.textContent = '✨ Guardar Frase';
-                }
-            },
-            
-            closePhraseModal() {
-                document.getElementById('phraseModal').classList.remove('show');
-                this.selectedDate = null;
-            },
-            
-            // ===== AGREGAR CONTENIDO =====
+            // ===== FUNCIONES PARA AGREGAR CONTENIDO =====
             async addMessage() {
                 if (!this.isConnected) {
                     this.showMessage('❌ Sin conexión a la base de datos', 'error');
                     return;
                 }
                 
-                const text = document.getElementById('messageText').value.trim();
                 const author = document.getElementById('messageAuthor').value;
+                const messageText = document.getElementById('messageText').value.trim();
                 const button = document.getElementById('addMessageBtn');
                 
-                if (!text) {
-                    this.showMessage('Por favor, escribe un mensaje bonito 💕', 'error');
+                if (!messageText) {
+                    this.showMessage('Por favor, escribe un mensaje 💕', 'error');
                     return;
                 }
                 
@@ -1571,22 +2068,20 @@
                 button.textContent = '⏳ Enviando...';
                 
                 try {
-                    const { error } = await this.supabase
+                    const { data, error } = await this.supabase
                         .from('love_messages')
                         .insert([{
                             author: author,
-                            message: text
+                            message: messageText
                         }]);
                     
                     if (error) throw error;
                     
-                    // Limpiar formulario
                     document.getElementById('messageText').value = '';
-                    
-                    this.showMessage('✨ Mensaje enviado con amor', 'success');
+                    this.showMessage('💕 ¡Mensaje enviado con amor!', 'success');
                     
                 } catch (error) {
-                    console.error('❌ Error guardando mensaje:', error);
+                    console.error('❌ Error agregando mensaje:', error);
                     this.showMessage('❌ Error enviando mensaje', 'error');
                 } finally {
                     button.disabled = false;
@@ -1600,18 +2095,13 @@
                     return;
                 }
                 
-                const title = document.getElementById('memoryTitle').value.trim();
                 const author = document.getElementById('memoryAuthor').value;
+                const title = document.getElementById('memoryTitle').value.trim();
                 const imageFile = document.getElementById('memoryImage').files[0];
                 const button = document.getElementById('addMemoryBtn');
                 
                 if (!title) {
-                    this.showMessage('Por favor, escribe un título para el recuerdo 💕', 'error');
-                    return;
-                }
-                
-                if (!imageFile) {
-                    this.showMessage('Por favor, selecciona una imagen 📸', 'error');
+                    this.showMessage('Por favor, escribe un título para el recuerdo 📸', 'error');
                     return;
                 }
                 
@@ -1621,23 +2111,24 @@
                 try {
                     let imageUrl = null;
                     
-                    // Subir imagen
-                    const fileName = `${Date.now()}_${imageFile.name}`;
-                    const { data: uploadData, error: uploadError } = await this.supabase.storage
-                        .from('love-memories')
-                        .upload(fileName, imageFile);
+                    // Subir imagen si existe
+                    if (imageFile) {
+                        const fileName = `${Date.now()}_${author}_${imageFile.name}`;
+                        const { data: uploadData, error: uploadError } = await this.supabase.storage
+                            .from('recuerdos')
+                            .upload(fileName, imageFile);
+                        
+                        if (uploadError) throw uploadError;
+                        
+                        const { data: urlData } = this.supabase.storage
+                            .from('recuerdos')
+                            .getPublicUrl(fileName);
+                        
+                        imageUrl = urlData.publicUrl;
+                    }
                     
-                    if (uploadError) throw uploadError;
-                    
-                    // Obtener URL pública
-                    const { data: urlData } = this.supabase.storage
-                        .from('love-memories')
-                        .getPublicUrl(fileName);
-                    
-                    imageUrl = urlData.publicUrl;
-                    
-                    // Guardar en base de datos
-                    const { error } = await this.supabase
+                    // Guardar recuerdo
+                    const { data, error } = await this.supabase
                         .from('love_memories')
                         .insert([{
                             author: author,
@@ -1651,10 +2142,10 @@
                     document.getElementById('memoryTitle').value = '';
                     document.getElementById('memoryImage').value = '';
                     
-                    this.showMessage('📸 Recuerdo guardado con amor', 'success');
+                    this.showMessage('📸 ¡Recuerdo guardado con amor!', 'success');
                     
                 } catch (error) {
-                    console.error('❌ Error guardando recuerdo:', error);
+                    console.error('❌ Error agregando recuerdo:', error);
                     this.showMessage('❌ Error guardando recuerdo', 'error');
                 } finally {
                     button.disabled = false;
@@ -1662,114 +2153,269 @@
                 }
             },
             
-            // ===== MOSTRAR CONTENIDO =====
-            displayMessages() {
-                const container = document.getElementById('messagesList');
+            // ===== FUNCIONES DEL CALENDARIO =====
+            renderCalendar() {
+                const grid = document.getElementById('calendarGrid');
+                const monthYear = document.getElementById('calendarMonthYear');
+                const turnInfo = document.getElementById('calendarTurnInfo');
                 
-                if (this.messages.length === 0) {
-                    container.innerHTML = '<div class="empty-state">Aún no hay mensajes de amor. ¡Sé el primero en escribir uno! 💕</div>';
-                    return;
-                }
+                // Mantener encabezados de días
+                const headers = grid.querySelectorAll('.calendar-day-header');
+                grid.innerHTML = '';
+                headers.forEach(header => grid.appendChild(header));
                 
-                container.innerHTML = this.messages.map(message => `
-                    <div class="content-item">
-                        <div class="content-meta">
-                            <span class="content-author">${message.author}</span>
-                            <span class="content-time">${this.formatDate(message.created_at)}</span>
-                        </div>
-                        <div class="content-text">"${message.message}"</div>
-                    </div>
-                `).join('');
-            },
-            
-            displayMemories() {
-                const container = document.getElementById('memoriesGrid');
+                const year = this.currentDate.getFullYear();
+                const month = this.currentDate.getMonth();
                 
-                if (this.memories.length === 0) {
-                    container.innerHTML = '<div class="empty-state">Aún no hay recuerdos. ¡Sube tu primera foto! 📸</div>';
-                    return;
-                }
-                
-                container.innerHTML = this.memories.map(memory => `
-                    <div class="content-item">
-                        ${memory.image_url ? `<img src="${memory.image_url}" class="memory-image" alt="${memory.title}">` : ''}
-                        <div class="content-meta">
-                            <span class="content-author">${memory.author}</span>
-                            <span class="content-time">${this.formatDate(memory.created_at)}</span>
-                        </div>
-                        <div class="content-text"><strong>${memory.title}</strong></div>
-                    </div>
-                `).join('');
-            },
-            
-            // ===== UTILIDADES =====
-            updateConnectionStatus(message, connected) {
-                const statusElement = document.getElementById('connectionStatus');
-                statusElement.textContent = message;
-                statusElement.className = connected ? 'connection-status' : 'connection-status offline';
-            },
-            
-            updateClock() {
-                // Usar hora de Chile
-                const now = this.getChileDate();
-                const timeString = now.toLocaleTimeString('es-CL', {
-                    hour12: false,
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit'
+                // Actualizar título
+                monthYear.textContent = this.currentDate.toLocaleDateString('es-CL', {
+                    month: 'long',
+                    year: 'numeric'
                 });
                 
-                const dateString = now.toLocaleDateString('es-CL', {
+                // Calcular días del mes
+                const firstDay = new Date(year, month, 1);
+                const lastDay = new Date(year, month + 1, 0);
+                const startDate = new Date(firstDay);
+                startDate.setDate(startDate.getDate() - firstDay.getDay());
+                
+                const today = this.getChileDate();
+                
+                // Calcular de quién es el turno hoy
+                const todayTurn = this.getTurnForDate(today);
+                turnInfo.innerHTML = `🌟 Hoy le toca a: <strong style="color: ${todayTurn === 'Nini' ? 'var(--primary-pink)' : 'var(--accent-blue)'};">${todayTurn}</strong>`;
+                
+                // Generar días
+                for (let i = 0; i < 42; i++) {
+                    const date = new Date(startDate);
+                    date.setDate(startDate.getDate() + i);
+                    
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day';
+                    dayElement.textContent = date.getDate();
+                    
+                    // Clases CSS
+                    if (date.getMonth() !== month) {
+                        dayElement.classList.add('other-month');
+                    }
+                    
+                    if (this.isSameDay(date, today)) {
+                        dayElement.classList.add('today');
+                    }
+                    
+                    // Verificar si hay frase para este día
+                    const dateString = this.formatDateChile(date);
+                    const hasPhrase = this.dailyPhrases.some(phrase => phrase.phrase_date === dateString);
+                    if (hasPhrase) {
+                        dayElement.classList.add('has-phrase');
+                    }
+                    
+                    // Agregar indicador de turno solo si no es otro mes
+                    if (date.getMonth() === month) {
+                        const turn = this.getTurnForDate(date);
+                        dayElement.classList.add(`${turn.toLowerCase()}-turn`);
+                    }
+                    
+                    // Evento click
+                    dayElement.addEventListener('click', () => this.openPhraseModal(date));
+                    
+                    grid.appendChild(dayElement);
+                }
+            },
+            
+            getTurnForDate(date) {
+                // Alternar turnos cada día, empezando con Nini
+                const daysSinceStart = Math.floor((date - this.relationshipStart) / (1000 * 60 * 60 * 24));
+                return daysSinceStart % 2 === 0 ? 'Nini' : 'Jota';
+            },
+            
+            changeMonth(direction) {
+                this.currentDate.setMonth(this.currentDate.getMonth() + direction);
+                this.renderCalendar();
+            },
+            
+            // ===== MODAL DE FRASES DIARIAS =====
+            openPhraseModal(date) {
+                this.selectedDate = date;
+                const modal = document.getElementById('phraseModal');
+                const title = document.getElementById('phraseModalTitle');
+                const modalDate = document.getElementById('phraseModalDate');
+                const turnInfo = document.getElementById('phraseModalTurn');
+                const phraseDisplay = document.getElementById('phraseDisplay');
+                const phraseForm = document.getElementById('phraseForm');
+                const saveButton = document.getElementById('savePhraseBtn');
+                
+                // Configurar modal
+                title.textContent = 'Frase del Día';
+                modalDate.textContent = date.toLocaleDateString('es-CL', {
                     weekday: 'long',
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric'
                 });
                 
-                document.getElementById('clock').textContent = timeString;
-                document.getElementById('date').textContent = dateString;
+                const turn = this.getTurnForDate(date);
+                const today = this.getChileDate();
+                const isToday = this.isSameDay(date, today);
+                const isFuture = date > today;
+                
+                turnInfo.innerHTML = `Es el turno de: <strong style="color: ${turn === 'Nini' ? 'var(--primary-pink)' : 'var(--accent-blue)'};">${turn}</strong>`;
+                
+                // Verificar si ya hay frase
+                const dateString = this.formatDateChile(date);
+                const existingPhrase = this.dailyPhrases.find(phrase => phrase.phrase_date === dateString);
+                
+                if (existingPhrase) {
+                    // Mostrar frase existente
+                    phraseDisplay.innerHTML = `
+                        <div class="phrase-display">
+                            <div class="phrase-text">${existingPhrase.phrase_text}</div>
+                            <div class="phrase-author">- ${existingPhrase.author}</div>
+                        </div>
+                    `;
+                    phraseDisplay.style.display = 'block';
+                    phraseForm.style.display = 'none';
+                    saveButton.style.display = 'none';
+                } else {
+                    // Mostrar formulario
+                    phraseDisplay.style.display = 'none';
+                    
+                    if (isFuture) {
+                        phraseForm.innerHTML = '<div class="phrase-display" style="text-align: center; color: var(--medium-text);">🔮 Este día aún no ha llegado. ¡Vuelve cuando sea el momento!</div>';
+                        saveButton.style.display = 'none';
+                    } else {
+                        phraseForm.style.display = 'block';
+                        saveButton.style.display = 'block';
+                        document.getElementById('phraseText').value = '';
+                    }
+                }
+                
+                modal.classList.add('show');
             },
             
-            updateStats() {
+            closePhraseModal() {
+                const modal = document.getElementById('phraseModal');
+                modal.classList.remove('show');
+                this.selectedDate = null;
+            },
+            
+            async saveDailyPhrase() {
+                if (!this.isConnected) {
+                    this.showMessage('❌ Sin conexión a la base de datos', 'error');
+                    return;
+                }
+                
+                if (!this.selectedDate) return;
+                
+                const phraseText = document.getElementById('phraseText').value.trim();
+                const button = document.getElementById('savePhraseBtn');
+                
+                if (!phraseText) {
+                    this.showMessage('Por favor, escribe una frase bonita 💕', 'error');
+                    return;
+                }
+                
+                // Verificar que sea el turno correcto
+                const expectedTurn = this.getTurnForDate(this.selectedDate);
                 const today = this.getChileDate();
-                const daysTogether = Math.floor((today - this.relationshipStart) / (1000 * 60 * 60 * 24));
+                
+                if (!this.isSameDay(this.selectedDate, today)) {
+                    this.showMessage('Solo puedes escribir la frase del día actual 📅', 'error');
+                    return;
+                }
+                
+                button.disabled = true;
+                button.textContent = '⏳ Guardando...';
+                
+                try {
+                    const { data, error } = await this.supabase
+                        .from('daily_phrases')
+                        .insert([{
+                            author: expectedTurn,
+                            phrase_text: phraseText,
+                            phrase_date: this.formatDateChile(this.selectedDate)
+                        }]);
+                    
+                    if (error) throw error;
+                    
+                    this.closePhraseModal();
+                    this.showMessage('💕 ¡Frase guardada con amor!', 'success');
+                    
+                } catch (error) {
+                    console.error('❌ Error guardando frase:', error);
+                    this.showMessage('❌ Error guardando frase', 'error');
+                } finally {
+                    button.disabled = false;
+                    button.textContent = '✨ Guardar Frase';
+                }
+            },
+            
+            // ===== FUNCIONES AUXILIARES =====
+            updateStats() {
+                const daysTogether = Math.floor((this.getChileDate() - this.relationshipStart) / (1000 * 60 * 60 * 24));
+                
                 document.getElementById('daysTogether').textContent = daysTogether;
                 document.getElementById('totalMemories').textContent = this.memories.length;
                 document.getElementById('totalMessages').textContent = this.messages.length;
                 document.getElementById('totalPhrases').textContent = this.dailyPhrases.length;
+                document.getElementById('totalChallenges').textContent = this.challengePhotos.length;
             },
             
-            formatDate(dateString) {
-                const date = new Date(dateString);
-                return date.toLocaleDateString('es-CL', {
+            updateConnectionStatus(message, isConnected) {
+                const status = document.getElementById('connectionStatus');
+                status.textContent = message;
+                status.className = `connection-status ${isConnected ? '' : 'offline'}`;
+            },
+            
+            updateClock() {
+                const now = this.getChileDate();
+                const clock = document.getElementById('clock');
+                const date = document.getElementById('date');
+                
+                clock.textContent = now.toLocaleTimeString('es-CL');
+                date.textContent = now.toLocaleDateString('es-CL', {
+                    weekday: 'long',
                     year: 'numeric',
-                    month: 'short',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
+                    month: 'long',
+                    day: 'numeric'
                 });
             },
             
-            showMessage(message, type) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = type;
-                messageDiv.textContent = message;
-                messageDiv.style.position = 'fixed';
-                messageDiv.style.top = '20px';
-                messageDiv.style.right = '20px';
-                messageDiv.style.zIndex = '10000';
-                messageDiv.style.padding = '15px 20px';
-                messageDiv.style.borderRadius = '15px';
-                messageDiv.style.fontWeight = '500';
-                messageDiv.style.maxWidth = '300px';
-                messageDiv.style.wordWrap = 'break-word';
+            formatTimeAgo(dateString) {
+                const date = new Date(dateString);
+                const now = this.getChileDate();
+                const diffMs = now - date;
+                const diffMins = Math.floor(diffMs / 60000);
+                const diffHours = Math.floor(diffMs / 3600000);
+                const diffDays = Math.floor(diffMs / 86400000);
                 
-                document.body.appendChild(messageDiv);
+                if (diffMins < 1) return 'Ahora mismo';
+                if (diffMins < 60) return `Hace ${diffMins} min`;
+                if (diffHours < 24) return `Hace ${diffHours}h`;
+                if (diffDays < 7) return `Hace ${diffDays} días`;
+                return date.toLocaleDateString('es-CL');
+            },
+            
+            showMessage(message, type = 'success') {
+                // Crear elemento de mensaje
+                const messageEl = document.createElement('div');
+                messageEl.className = `${type} fade-in`;
+                messageEl.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    z-index: 10001;
+                    max-width: 300px;
+                    animation: slideIn 0.3s ease;
+                `;
+                messageEl.textContent = message;
                 
+                document.body.appendChild(messageEl);
+                
+                // Remover después de 4 segundos
                 setTimeout(() => {
-                    if (messageDiv.parentNode) {
-                        messageDiv.remove();
-                    }
+                    messageEl.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => messageEl.remove(), 300);
                 }, 4000);
             },
             
@@ -1777,185 +2423,149 @@
             createAnimatedBackground() {
                 const bg = document.getElementById('animatedBg');
                 
-                // Crear formas geométricas flotantes
-                for (let i = 0; i < 6; i++) {
-                    const shape = document.createElement('div');
-                    shape.style.position = 'absolute';
-                    shape.style.width = Math.random() * 80 + 40 + 'px';
-                    shape.style.height = shape.style.width;
-                    shape.style.borderRadius = '50%';
-                    shape.style.background = `linear-gradient(45deg, rgba(255, 107, 157, 0.1), rgba(78, 205, 196, 0.1))`;
-                    shape.style.left = Math.random() * 100 + '%';
-                    shape.style.top = Math.random() * 100 + '%';
-                    shape.style.animation = `float-shape ${Math.random() * 20 + 15}s ease-in-out infinite`;
-                    shape.style.animationDelay = Math.random() * 10 + 's';
-                    bg.appendChild(shape);
-                }
-                
-                // Agregar animación CSS para las formas
-                const style = document.createElement('style');
-                style.textContent = `
-                    @keyframes float-shape {
-                        0%, 100% { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.3; }
-                        25% { transform: translateY(-30px) translateX(20px) scale(1.1); opacity: 0.5; }
-                        50% { transform: translateY(-60px) translateX(-10px) scale(0.9); opacity: 0.4; }
-                        75% { transform: translateY(-30px) translateX(-20px) scale(1.2); opacity: 0.6; }
-                    }
-                `;
-                document.head.appendChild(style);
+                // Crear corazones flotantes cada cierto tiempo
+                setInterval(() => this.createFloatingHeart(), 8000);
             },
             
             createFloatingHeart() {
+                const bg = document.getElementById('animatedBg');
                 const heart = document.createElement('div');
+                
+                const hearts = ['💖', '💕', '💗', '💝', '💘', '❤️', '🧡', '💛', '💚', '💙', '💜'];
+                const randomHeart = hearts[Math.floor(Math.random() * hearts.length)];
+                
                 heart.className = 'floating-heart';
-                heart.innerHTML = ['💕', '💖', '💗', '💝', '💘'][Math.floor(Math.random() * 5)];
-                heart.style.left = Math.random() * 100 + '%';
-                heart.style.fontSize = Math.random() * 20 + 15 + 'px';
-                heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                heart.textContent = randomHeart;
+                heart.style.cssText = `
+                    left: ${Math.random() * 100}%;
+                    font-size: ${1 + Math.random()}rem;
+                    animation-duration: ${10 + Math.random() * 10}s;
+                `;
                 
-                document.getElementById('animatedBg').appendChild(heart);
+                bg.appendChild(heart);
                 
-                setTimeout(() => {
-                    if (heart.parentNode) {
-                        heart.remove();
-                    }
-                }, 15000);
+                // Remover después de la animación
+                setTimeout(() => heart.remove(), 20000);
             },
             
             addEntryAnimations() {
-                const cards = document.querySelectorAll('.card');
+                const cards = document.querySelectorAll('.fade-in');
                 cards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.classList.add('fade-in');
-                    }, index * 200);
+                    card.style.animationDelay = `${index * 0.1}s`;
                 });
             },
             
-            // ===== INSTRUCCIONES DE CONFIGURACIÓN =====
             showSetupInstructions() {
                 console.log(`
-🚀 CONFIGURACIÓN DE SUPABASE PARA NINI & JOTA CON CALENDARIO
+🚀 CONFIGURACIÓN INICIAL - LOVE APP
+=====================================
 
-📋 PASOS PARA CONFIGURAR:
+Para que la aplicación funcione correctamente, necesitas:
 
-1️⃣ Crear proyecto en Supabase:
-   - Ve a https://supabase.com
-   - Crea un nuevo proyecto
-   - Anota el Project URL y anon key
+1. Crear un proyecto en Supabase (https://supabase.com)
+2. Crear las siguientes tablas en tu base de datos:
 
-2️⃣ Configurar credenciales:
-   - En el código JavaScript, reemplaza:
-     SUPABASE_URL = 'https://tu-proyecto.supabase.co'
-     SUPABASE_ANON_KEY = 'tu-anon-key-aqui'
-
-3️⃣ Crear las tablas (ejecuta en SQL Editor):
-
--- Tabla para mensajes de amor
 CREATE TABLE love_messages (
-    id BIGSERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     author TEXT NOT NULL,
     message TEXT NOT NULL,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
 );
 
--- Tabla para recuerdos con imágenes
 CREATE TABLE love_memories (
-    id BIGSERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     author TEXT NOT NULL,
     title TEXT NOT NULL,
     image_url TEXT,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
 );
 
--- Tabla para frases diarias del calendario
 CREATE TABLE daily_phrases (
-    id BIGSERIAL PRIMARY KEY,
-    date DATE NOT NULL UNIQUE,
+    id SERIAL PRIMARY KEY,
     author TEXT NOT NULL,
-    phrase TEXT NOT NULL,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+    phrase_text TEXT NOT NULL,
+    phrase_date DATE NOT NULL UNIQUE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
 );
 
-4️⃣ Configurar storage para imágenes:
+CREATE TABLE fotos_retos (
+    id SERIAL PRIMARY KEY,
+    author TEXT NOT NULL,
+    image_url TEXT NOT NULL,
+    challenge_text TEXT NOT NULL,
+    challenge_icon TEXT NOT NULL,
+    challenge_date DATE NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
 
--- Crear bucket para recuerdos
-INSERT INTO storage.buckets (id, name, public) 
-VALUES ('love-memories', 'love-memories', true);
+3. Crear buckets de almacenamiento:
+   - 'recuerdos' (para fotos de recuerdos)
+   - 'retos-fotos' (para fotos de retos)
 
--- Configurar políticas de seguridad para storage
-CREATE POLICY "Public Access" ON storage.objects FOR SELECT USING (bucket_id = 'love-memories');
-CREATE POLICY "Authenticated users can upload" ON storage.objects FOR INSERT WITH CHECK (bucket_id = 'love-memories');
+4. Configurar las políticas RLS según tus necesidades
 
--- Habilitar Row Level Security
-ALTER TABLE love_messages ENABLE ROW LEVEL SECURITY;
-ALTER TABLE love_memories ENABLE ROW LEVEL SECURITY;
-ALTER TABLE daily_phrases ENABLE ROW LEVEL SECURITY;
+5. Reemplazar las credenciales en la función initializeSupabase()
 
--- Políticas para acceso público (opcional, para mayor seguridad configurar autenticación)
-CREATE POLICY "Allow all operations" ON love_messages FOR ALL USING (true);
-CREATE POLICY "Allow all operations" ON love_memories FOR ALL USING (true);
-CREATE POLICY "Allow all operations" ON daily_phrases FOR ALL USING (true);
-
-5️⃣ Activar Real-time:
-   - Ve a Database > Replication
-   - Activa las tablas para real-time
-
-🎉 ¡Listo! Tu aplicación de amor estará funcionando.
-
-💡 CARACTERÍSTICAS:
-   ✨ Calendario interactivo con turnos alternados
-   💌 Mensajes de amor en tiempo real
-   📸 Galería de recuerdos con imágenes
-   📅 Frases del día por turnos (Nini/Jota)
-   🔄 Sincronización automática
-   💕 Animaciones románticas
-   📱 Responsive design optimizado para móviles
-   🇨🇱 Configurado para zona horaria de Chile
-
-🔧 PERSONALIZACIÓN:
-   - Cambia la fecha de inicio en: relationshipStart: new Date('2024-10-20')
-   - Los turnos alternan cada día empezando con Nini
-   - Colores y efectos se pueden personalizar en CSS
-
-📱 USO:
-   - Cada día corresponde un turno (Nini o Jota)
-   - Click en días del calendario para agregar frases
-   - Solo se pueden agregar frases el día actual
-   - Los recuerdos y mensajes se pueden agregar siempre
-
-🛠️ OPTIMIZACIONES MÓVILES:
-   ✅ Calendario perfectamente adaptado para pantallas pequeñas
-   ✅ Botones con tamaño mínimo recomendado para touch (44px)
-   ✅ Espaciado optimizado entre elementos del calendario
-   ✅ Modal responsive que se ajusta al tamaño de pantalla
-   ✅ Grid de días con mejor visibilidad en móvil
-   ✅ Headers de días abreviados para mejor legibilidad
-   ✅ Controles de navegación del calendario más grandes
-   ✅ Información de turnos adaptativa
-
-¡Disfruten su aplicación de amor optimizada para móviles! 💕📱
+✨ ¡Una vez configurado, tendrás una aplicación de amor completamente funcional!
                 `);
             }
         };
 
-        // ===== INICIALIZAR AL CARGAR LA PÁGINA =====
-        document.addEventListener('DOMContentLoaded', () => {
-            LoveApp.init();
+        // ===== EVENTOS GLOBALES =====
+        // Cerrar modal al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            const modal = document.getElementById('phraseModal');
+            if (e.target === modal) {
+                LoveApp.closePhraseModal();
+            }
         });
 
-        // ===== CERRAR MODAL CON ESC =====
+        // Cerrar modal con ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 LoveApp.closePhraseModal();
             }
         });
 
-        // ===== CERRAR MODAL CLICKEANDO FUERA =====
-        document.getElementById('phraseModal').addEventListener('click', (e) => {
-            if (e.target.id === 'phraseModal') {
-                LoveApp.closePhraseModal();
-            }
+        // ===== INICIALIZACIÓN =====
+        document.addEventListener('DOMContentLoaded', () => {
+            LoveApp.init();
         });
+
+        // Estilos adicionales para animaciones
+        const additionalStyles = document.createElement('style');
+        additionalStyles.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(additionalStyles);
+        // Función para abrir el overlay con la imagen grande
+// Mostrar overlay con imagen
+function abrirOverlayConImagen(urlImagen) {
+  const overlay = document.getElementById('overlay');
+  const overlayImg = document.getElementById('overlay-image');
+  const downloadBtn = document.getElementById('download-btn');
+  overlayImg.src = urlImagen;
+  downloadBtn.href = urlImagen;
+  overlay.style.display = 'flex';
+}
+
+
+
+document.getElementById('overlay').addEventListener('click', function(e) {
+  if (e.target.id === 'overlay') {
+    this.style.display = 'none';
+  }
+});
+
+
     </script>
 </body>
 </html>
